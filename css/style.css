@@ -1,5 +1,9 @@
 @import url("photographer.css");
 
+:root {
+  --bg-primary: #D3573C;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -24,7 +28,12 @@ h1 {
 .logo {
     height: 50px;
     margin-left: 100px;
+    margin-right: 100px;
+
 }
+  a:focus {
+    outline: none;
+  }
 
 /* main {
   padding: 0 0px;
@@ -84,6 +93,11 @@ h1 {
 
     }
 }
+    a:focus-visible {
+      padding: 4px;
+      border: 3px solid var(--bg-primary);
+      border-radius: 4px;
+    }
 
 
 .link-artist-page {
