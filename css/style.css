@@ -12,11 +12,13 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    padding-top: 22px;
 }
 
 h1 {
     color: #901C1C;
-    margin-right: 100px;
+    margin-right: 7vw;
+    font-size: 36px;
 }
 
 .logo {
@@ -24,27 +26,70 @@ h1 {
     margin-left: 100px;
 }
 
+/* main {
+  padding: 0 0px;
+} */
+
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+    gap: 78px 112px;
+    margin-top: 92px;
 }
 
-.photographer_section article {
+.card-artist {
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    .artist-picture {
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+
+    }
+    .artist-name {
+      color: #D3573C;
+      font-size: 36px;
+      font-weight: 400;
+      margin: 18px 0 0 0;
+      padding-right: 5px;
+
+
+    }
+
+    .card-artist__country {
+      color: #901C1C;
+      font-size: 13px;
+      font-weight: 400;
+      margin: 4px 0 0 0;
+
+    }
+    .card-artist__tagline {
+      color: #000000;
+      font-size: 10px;
+      font-weight: 400;
+      margin: 2px 0 0 0;
+
+    }
+
+    .card-artist__price {
+      color: #757575;
+      font-size: 9px;
+      font-weight: 400;
+      margin: 2px 0 0 0;
+
+    }
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
-}
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+.link-artist-page {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
