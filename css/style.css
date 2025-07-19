@@ -3,6 +3,7 @@
 :root {
   --bg-primary: #901C1C;
   --bg-secondary: #D3573C;
+  --bg-focus: #DB8876;
 }
 
 body {
@@ -108,47 +109,4 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-
-/* Photographer page */
-
-.photograph-header {
-  margin: 1.3em 6.2em;
-  padding-bottom: 1em;
-}
-
-.photograph-info {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr;
-}
-
-.info-wrapper {
-  margin-top: 1.8em;
-  padding-left: 3.5em;
-
-    .info-wrapper__name {
-      font-size: 4em;
-      margin-bottom: 0;
-      font-weight: 300;
-      color: var(--bg-secondary);
-    }
-
-    .info-wrapper__origin {
-      color: var(--bg-primary);
-      font-size: 1.5em ;
-      margin: 0px 0 0.8em 0;
-    }
-
-      .info-wrapper__tagLine {
-      font-size: 1.10em ;
-    }
-}
-
-.btn-wrapper {
-  padding: 8.5em 0 0 3.6em;
-}
-
-.img-wrapper {
-  padding: 3.4em 0 0 8em;
 }
