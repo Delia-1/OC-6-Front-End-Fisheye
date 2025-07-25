@@ -1,103 +1,113 @@
-function photographerTemplate(data) {
-    const {id, name, portrait, city, country, tagline, price } = data;
+export default function photographerTemplate(data) {
+  const { id, name, portrait, city, country, tagline, price } = data;
+  const picture = `assets/photographers/${portrait}`;
 
-    const picture = `assets/photographers/${portrait}`;
+  function PhotographersFactory(section) {
+    if (section.header) {
+      return new Header(data);
+    }
+    if (section.card) {
+      return new Card(data);
+    }
+  }
 
-    function getUserCardDOM(isHeader = false) {
+  class Header {
+    constructor(data) {
+      this.render = function () {
+        const photographInfo = document.createElement("div");
+        photographInfo.setAttribute("class", "photograph-info");
 
-      if (isHeader) {
-
-      const photographInfo = document.createElement( "div" );
-      photographInfo.setAttribute("class", "photograph-info")
-      //  div info-wrapper
-      const infoWrapper = document.createElement("div");
-      infoWrapper.setAttribute("class", "info-wrapper");
+        //  div info-wrapper
+        const infoWrapper = document.createElement("div");
+        infoWrapper.setAttribute("class", "info-wrapper");
 
         // name
-      const photographName = document.createElement("h1");
-      photographName.setAttribute("class", "info-wrapper__name")
-      photographName.textContent = (name)
+        const photographName = document.createElement("h1");
+        photographName.setAttribute("class", "info-wrapper__name");
+        photographName.textContent = name;
 
         // origin
-      const origin = document.createElement("p");
-      origin.setAttribute("class", "info-wrapper__origin")
-      origin.textContent = (city +", "+ country.toUpperCase())
+        const origin = document.createElement("p");
+        origin.setAttribute("class", "info-wrapper__origin");
+        origin.textContent = data.city + ", " + country.toUpperCase();
 
         // citation
-      const tagLine = document.createElement("p");
-      tagLine.setAttribute("class", "info-wrapper__tagLine")
-      tagLine.textContent = (tagline)
+        const tagLine = document.createElement("p");
+        tagLine.setAttribute("class", "info-wrapper__tagLine");
+        tagLine.textContent = tagline;
 
         // col2 / div2
-      const btnWrapper = document.createElement("div");
-      btnWrapper.setAttribute("class", "btn-wrapper");
+        const btnWrapper = document.createElement("div");
+        btnWrapper.setAttribute("class", "btn-wrapper");
 
         // bouton
-      const button = document.createElement("button");
-      button.setAttribute("class", "contact_button" )
-      button.textContent = "Contactez-moi";
+        const button = document.createElement("button");
+        button.setAttribute("class", "contact_button");
+        button.textContent = "Contactez-moi";
 
         // div img-wrapper
-      const imgWrapper = document.createElement("div");
-      imgWrapper.setAttribute("class", "img-wrapper")
+        const imgWrapper = document.createElement("div");
+        imgWrapper.setAttribute("class", "img-wrapper");
 
         // artist-picture
-      const image = document.createElement("img");
-      image.setAttribute("class", "artist-picture")
-      image.setAttribute("src", picture);
-      image.setAttribute("alt", `photo de ${name}`);
+        const image = document.createElement("img");
+        image.setAttribute("class", "artist-picture");
+        image.setAttribute("src", picture);
+        image.setAttribute("alt", `photo de ${name}`);
 
-      // section pour les photos photograph-pictures:
+        // section pour les photos photograph-pictures:
 
-      photographInfo.appendChild(infoWrapper);
-      infoWrapper.appendChild(photographName);
-      infoWrapper.appendChild(origin);
-      infoWrapper.appendChild(tagLine);
+        photographInfo.appendChild(infoWrapper);
+        infoWrapper.appendChild(photographName);
+        infoWrapper.appendChild(origin);
+        infoWrapper.appendChild(tagLine);
+        photographInfo.appendChild(btnWrapper);
+        btnWrapper.appendChild(button);
 
-      photographInfo.appendChild(btnWrapper)
-      btnWrapper.appendChild(button)
+        photographInfo.appendChild(imgWrapper);
+        imgWrapper.appendChild(image);
 
-      photographInfo.appendChild(imgWrapper);
-      imgWrapper.appendChild(image);
-
-
-      return photographInfo;
-    } else {
-
-      // div article/ container card-artist
-        const article = document.createElement( 'article' );
+        return photographInfo;
+      };
+    }
+  }
+  class Card {
+    constructor(data) {
+      this.render = function () {
+        // div article/ container card-artist
+        const article = document.createElement("article");
         article.setAttribute("class", "card-artist");
-        article.setAttribute("aria-label", `Carte du photographe ${name}`);
+        article.setAttribute("aria-label", `Carte du photographe ${data.name}`);
 
-      // link to the photographer page / link-artist-page
-        const link = document.createElement( 'a' );
+        // link to the photographer page / link-artist-page
+        const link = document.createElement("a");
         link.setAttribute("class", "link-artist-page");
         link.setAttribute("href", `photographer.html?id=${id}`);
         link.setAttribute("aria-label", `Naviguer sur la page de ${name} `);
 
-      // artist-picture
-        const img = document.createElement( 'img' );
+        // artist-picture
+        const img = document.createElement("img");
         img.setAttribute("class", "artist-picture");
         img.setAttribute("src", picture);
         img.setAttribute("alt", `photo de ${name}`);
 
-      // artist-name
-        const h2 = document.createElement( 'h2' );
+        // artist-name
+        const h2 = document.createElement("h2");
         h2.setAttribute("class", "artist-name");
         h2.textContent = name;
 
-      // card-artist__country
-        const pCountry = document.createElement( 'p' );
+        // card-artist__country
+        const pCountry = document.createElement("p");
         pCountry.setAttribute("class", "card-artist__country");
         pCountry.textContent = country;
 
-      // card-artist__tagline
-        const pTagline = document.createElement( 'p' );
+        // card-artist__tagline
+        const pTagline = document.createElement("p");
         pTagline.setAttribute("class", "card-artist__tagline");
         pTagline.textContent = tagline;
 
-      // card-artist__price
-        const pPrice = document.createElement( 'p' );
+        // card-artist__price
+        const pPrice = document.createElement("p");
         pPrice.setAttribute("class", "card-artist__price");
         pPrice.textContent = `${price}€/jour`;
 
@@ -109,12 +119,19 @@ function photographerTemplate(data) {
         article.appendChild(pTagline);
         article.appendChild(pPrice);
 
-        return (article);
-      }
+        return article;
+      };
     }
+  }
 
-    return { id, name, picture, country, tagline, price, getUserCardDOM }
-
+  return {
+    id,
+    name,
+    picture,
+    country,
+    tagline,
+    price,
+    renderHeader: () => PhotographersFactory({ header: true }).render(),
+    renderCard: () => PhotographersFactory({ card: true }).render(),
+  };
 }
-        // img.setAttribute("src", picture);
-        // img.setAttribute("alt", `photo de ${name}`);
