@@ -1,69 +1,93 @@
 function galleryTemplate(goodPics) {
-  // const {id, photographerId, title, image, likes, date, price} = goodPics;
+  // const {name, id, photographerId, title, image, likes, date, price} = goodPics;
 
+  function MediaFactory(media) {
+    if(media.image) {return new Picture(media)};
+    if(media.video) {return new Video(media)};
+  }
 
-    function getGalleryDOM() {
+  function Picture(data) {
+    this.renderMedia = function () {
+      const picture = document.createElement("img");
+      picture.setAttribute("src", `assets/pics/${data.image}`)
+      picture.setAttribute("alt", data.title);
+      picture.setAttribute("class", "picture")
+      return picture
+    }
 
-        const container = document.createElement('div');
+  }
+
+  function Video(data) {
+    this.renderMedia = function () {
+      const video = document.createElement("video");
+      video.setAttribute("controls", true);
+      video.setAttribute("class", "video");
+      const source = document.createElement("source");
+      source.setAttribute("src", `assets/pics/${data.video}`);
+      source.setAttribute("type", "video/mp4");
+      video.appendChild(source);
+
+      return video;
+    }
+  }
+
+  function getGalleryDOM() {
+    const superContainer = document.querySelector(".gallery-section");
+
+        const reorderDiv = document.createElement("div");
+        reorderDiv.setAttribute("class", "reoder-Div");
+
+        const selectLabel = document.createElement("label");
+        selectLabel.setAttribute("class", "select-label")
+        selectLabel.setAttribute("for","select-filter");
+        selectLabel.textContent="Trier par";
+
+        const container = document.createElement('section');
         container.setAttribute("class", "gallery-container");
-
-        goodPics.forEach(pic => {
-        const article = document.createElement("article");
-        article.setAttribute("class", "card-picture")
-
-        const picture = document.createElement("img");
-        picture.setAttribute("src", `assets/pics/${pic.image}`)
-        picture.setAttribute("alt", pic.title);
-
-        const video = document.createElement("video");
-        video.setAttribute("src",`assets/pics/${pic.image}`)
+        container.setAttribute("aria-label", "section des photographies")
 
 
-        article.appendChild(picture)
-        article.appendChild(video)
+        goodPics.forEach(mediaData => {
+          const media = MediaFactory(mediaData);
+
+          const article = document.createElement("article");
+          article.setAttribute("class", "card-picture")
+
+        const mediaElement = media.renderMedia();
+
+        const infoWrapper = document.createElement("div");
+        infoWrapper.setAttribute("class", "pic-info-wrapper")
+
+        const artPieceTitle = document.createElement("h3");
+        artPieceTitle.setAttribute("class", "picture__title");
+        artPieceTitle.textContent = (mediaData.title);
+
+        const likesDiv = document.createElement("div");
+        likesDiv.setAttribute("class", "likes-div");
+
+
+        const nbLikes = document.createElement("p");
+         nbLikes.setAttribute("class", "picture__likes");
+        nbLikes.textContent = (mediaData.likes);
+
+        const heartIcon = document.createElement("img");
+        heartIcon.setAttribute("class", "heart-icon")
+        heartIcon.setAttribute("src", "assets/icons/heartIcon.png");
+        heartIcon.setAttribute("alt", "icon coeur")
+
+
+        superContainer.appendChild(reorderDiv);
+        reorderDiv.appendChild(selectLabel)
         container.appendChild(article);
+        reorderDiv.appendChild(selectLabel)
+        article.appendChild(mediaElement);
+        article.appendChild(infoWrapper);
+        infoWrapper.appendChild(artPieceTitle);
+        infoWrapper.appendChild(likesDiv);
+        likesDiv.appendChild(nbLikes);
+        likesDiv.appendChild(heartIcon);
+
     })
-
-
-
-      // // link to the photographer page / link-artist-page
-      //   const link = document.createElement( 'a' );
-      //   link.setAttribute("class", "link-artist-page");
-      //   link.setAttribute("href", `photographer.html?id=${id}`);
-      //   link.setAttribute("aria-label", `Naviguer sur la page de ${name} `);
-
-      // // artist-picture
-      //   const img = document.createElement( 'img' );
-      //   img.setAttribute("class", "artist-picture");
-      //   img.setAttribute("src", picture);
-      //   img.setAttribute("alt", `photo de ${name}`);
-
-      // artist-name
-
-
-      // // card-artist__country
-      //   const pCountry = document.createElement( 'p' );
-      //   pCountry.setAttribute("class", "card-artist__country");
-      //   pCountry.textContent = country;
-
-      // // card-artist__tagline
-      //   const pTagline = document.createElement( 'p' );
-      //   pTagline.setAttribute("class", "card-artist__tagline");
-      //   pTagline.textContent = tagline;
-
-      // // card-artist__price
-      //   const pPrice = document.createElement( 'p' );
-      //   pPrice.setAttribute("class", "card-artist__price");
-      //   pPrice.textContent = `${price}€/jour`;
-
-      //   // append all
-        // article.appendChild(link);
-      //   link.appendChild(img);
-
-        // article.appendChild(image)
-      //   article.appendChild(pCountry);
-      //   article.appendChild(pTagline);
-      //   article.appendChild(pPrice);
 
         return container;
       }

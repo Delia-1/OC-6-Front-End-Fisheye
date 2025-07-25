@@ -1,10 +1,7 @@
 function photographerTemplate(data) {
-    const {id, name, portrait, country, tagline, price } = data;
+    const {id, name, portrait, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
-
-
-
 
     function getUserCardDOM(isHeader = false) {
 
@@ -24,7 +21,7 @@ function photographerTemplate(data) {
         // origin
       const origin = document.createElement("p");
       origin.setAttribute("class", "info-wrapper__origin")
-      origin.textContent = (country.toUpperCase())
+      origin.textContent = (city +", "+ country.toUpperCase())
 
         // citation
       const tagLine = document.createElement("p");
