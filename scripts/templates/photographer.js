@@ -1,61 +1,33 @@
-export default function photographerTemplate(data) {
+import { ElementFactory } from "../utils/FactoryPatterns.js";
+
+export default function photographerTemplates(data) {
+  // destructuration de data
   const { id, name, portrait, city, country, tagline, price } = data;
   const picture = `assets/photographers/${portrait}`;
 
+// Factory gestion section
   function PhotographersFactory(section) {
     if (section.header) {
-      return new Header(data);
+      return new Header();
     }
     if (section.card) {
-      return new Card(data);
+      return new Card();
     }
   }
 
+  // construction du header de chaque page photographe
   class Header {
-    constructor(data) {
+    constructor() {
       this.render = function () {
-        const photographInfo = document.createElement("div");
-        photographInfo.setAttribute("class", "photograph-info");
-
-        //  div info-wrapper
-        const infoWrapper = document.createElement("div");
-        infoWrapper.setAttribute("class", "info-wrapper");
-
-        // name
-        const photographName = document.createElement("h1");
-        photographName.setAttribute("class", "info-wrapper__name");
-        photographName.textContent = name;
-
-        // origin
-        const origin = document.createElement("p");
-        origin.setAttribute("class", "info-wrapper__origin");
-        origin.textContent = data.city + ", " + country.toUpperCase();
-
-        // citation
-        const tagLine = document.createElement("p");
-        tagLine.setAttribute("class", "info-wrapper__tagLine");
-        tagLine.textContent = tagline;
-
-        // col2 / div2
-        const btnWrapper = document.createElement("div");
-        btnWrapper.setAttribute("class", "btn-wrapper");
-
-        // bouton
-        const button = document.createElement("button");
-        button.setAttribute("class", "contact_button");
-        button.textContent = "Contactez-moi";
-
-        // div img-wrapper
-        const imgWrapper = document.createElement("div");
-        imgWrapper.setAttribute("class", "img-wrapper");
-
-        // artist-picture
-        const image = document.createElement("img");
-        image.setAttribute("class", "artist-picture");
-        image.setAttribute("src", picture);
-        image.setAttribute("alt", `photo de ${name}`);
-
-        // section pour les photos photograph-pictures:
+        const photographInfo = ElementFactory("div", "photograph-info").el;
+        const infoWrapper = ElementFactory("div", "info-wrapper").el;
+        const photographName = ElementFactory("h1", "info-wrapper__name", name).el;
+        const origin = ElementFactory("p", "info-wrapper__origin", `${city}, ${country.toUpperCase()}`).el;
+        const tagLine = ElementFactory("p", "info-wrapper__tagLine", tagline).el;
+        const btnWrapper = ElementFactory("div", "btn-wrapper").el;
+        const button = ElementFactory("button", "contact_button", "Contactez-moi").el;
+        const imgWrapper = ElementFactory("div", "img-wrapper").el;
+        const image = ElementFactory("img", "artist-picture", "", picture, `Photo de ${name}`).el;
 
         photographInfo.appendChild(infoWrapper);
         infoWrapper.appendChild(photographName);
@@ -71,47 +43,19 @@ export default function photographerTemplate(data) {
       };
     }
   }
+
+  // construction des cards photographe sur la homepage
   class Card {
-    constructor(data) {
+    constructor() {
       this.render = function () {
-        // div article/ container card-artist
-        const article = document.createElement("article");
-        article.setAttribute("class", "card-artist");
-        article.setAttribute("aria-label", `Carte du photographe ${data.name}`);
+        const article = ElementFactory("article", "card-artist", "", "", "", `Carte du photographe ${name}`).el;
+        const link = ElementFactory("a", "link-artist-page","", "", "", `Naviguer sur la page de ${name}`, "", `photographer.html?id=${id}`).el;
+        const img = ElementFactory("img", "artist-picture", "", picture, `Photo de ${name}` ).el;
+        const h2 = ElementFactory("h2", "artist-name", name).el;
+        const pCountry = ElementFactory("p", "card-artist__country", `${city}, ${country.toUpperCase()}`).el;
+        const pTagline = ElementFactory("p", "card-artist__tagline", tagline).el;
+        const pPrice = ElementFactory("p", "card-artist__price", `${price}€/jour`).el;
 
-        // link to the photographer page / link-artist-page
-        const link = document.createElement("a");
-        link.setAttribute("class", "link-artist-page");
-        link.setAttribute("href", `photographer.html?id=${id}`);
-        link.setAttribute("aria-label", `Naviguer sur la page de ${name} `);
-
-        // artist-picture
-        const img = document.createElement("img");
-        img.setAttribute("class", "artist-picture");
-        img.setAttribute("src", picture);
-        img.setAttribute("alt", `photo de ${name}`);
-
-        // artist-name
-        const h2 = document.createElement("h2");
-        h2.setAttribute("class", "artist-name");
-        h2.textContent = name;
-
-        // card-artist__country
-        const pCountry = document.createElement("p");
-        pCountry.setAttribute("class", "card-artist__country");
-        pCountry.textContent = country;
-
-        // card-artist__tagline
-        const pTagline = document.createElement("p");
-        pTagline.setAttribute("class", "card-artist__tagline");
-        pTagline.textContent = tagline;
-
-        // card-artist__price
-        const pPrice = document.createElement("p");
-        pPrice.setAttribute("class", "card-artist__price");
-        pPrice.textContent = `${price}€/jour`;
-
-        // append all
         article.appendChild(link);
         link.appendChild(img);
         link.appendChild(h2);
