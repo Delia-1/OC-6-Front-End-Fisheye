@@ -11,6 +11,12 @@ body {
     margin: 0;
 }
 
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
 
 header {
     display: flex;

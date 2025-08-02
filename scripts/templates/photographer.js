@@ -25,7 +25,8 @@ export default function photographerTemplates(data) {
         const origin = ElementFactory("p", "info-wrapper__origin", `${city}, ${country.toUpperCase()}`).el;
         const tagLine = ElementFactory("p", "info-wrapper__tagLine", tagline).el;
         const btnWrapper = ElementFactory("div", "btn-wrapper").el;
-        const button = ElementFactory("button", "contact_button", "Contactez-moi").el;
+        // const button = ElementFactory("button", "contact_button", "Contactez-moi").el;
+        const button = document.querySelector(".contact_button")
         const imgWrapper = ElementFactory("div", "img-wrapper").el;
         const image = ElementFactory("img", "artist-picture", "", picture, `Photo de ${name}`).el;
 

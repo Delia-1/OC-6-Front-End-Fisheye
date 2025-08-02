@@ -1,6 +1,7 @@
 import { getPhotographers } from "../utils/getPhotographer.js";
 import photographerTemplates from "../templates/photographer.js";
 import galleryTemplate from "../templates/galleryTemplate.js";
+import { initModal } from "../utils/contactForm.js";
 
 async function displayDataProfilePage(photographer) {
   const headerSection = document.querySelector(".photograph-section");
@@ -8,13 +9,25 @@ async function displayDataProfilePage(photographer) {
   const headerDOM = model.renderHeader();
 
   headerSection.appendChild(headerDOM);
+
+  // Personnaliser le titre de la modale
+  const modalTitle = document.getElementById("modal_title");
+  if (modalTitle) {
+    modalTitle.innerHTML = `Contactez-moi ${photographer.name}`;
+  }
 }
+
+
+
 async function displayGalleryProfilePage( photographer) {
   const gallerySection = document.querySelector(".gallery-section")
   const galleryModel = galleryTemplate(photographer);
   const galleryDom = galleryModel.getGalleryDOM();
 
   gallerySection.appendChild(galleryDom)
+  // Initialisation de la modale une fois le Dom est chargé
+      initModal();
+
 }
 
 // To put in utils?
