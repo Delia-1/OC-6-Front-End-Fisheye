@@ -8,19 +8,25 @@ main {
 
 
 .photograph-section {
-  background-color: #FAFAFA;
-  margin: 1.3em 0;
-  padding-bottom: 3.2em;
+/* display: flex; */
+    background-color: #FAFAFA;
+    margin: 1.3em 0;
+    padding: 3.2em 3em;
+    /* align-items: center; */
+
 }
 
 .photograph-info {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr;
+  /* display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .info-wrapper {
-  margin-top: 1.8em;
-  padding-left: 3.2em;
+  margin-top: -1.8em;
+  /* padding-left: 3.2em; */
 
     .info-wrapper__name {
       font-size: 4em;
@@ -41,12 +47,19 @@ main {
 }
 
 .btn-wrapper {
-  padding: 8.5em 0 0 3.6em;
+  margin-left: -5em;
+  margin-top: 1.8em;
 }
 
-.img-wrapper {
-  padding: 3.4em 0 0 8em;
-}
+
+
+    .artist-picture--ownpage {
+    width: 175%;
+    object-fit: cover;
+    transform: translate(-22%, -25%);
+    border-radius: 50%;
+
+    }
 
 
 .contact_button, .send_button {

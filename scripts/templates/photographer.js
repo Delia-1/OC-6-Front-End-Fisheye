@@ -51,6 +51,7 @@ export default function photographerTemplates(data) {
       this.render = function () {
         const article = ElementFactory("article", "card-artist", "", "", "", `Carte du photographe ${name}`).el;
         const link = ElementFactory("a", "link-artist-page","", "", "", `Naviguer sur la page de ${name}`, "", `photographer.html?id=${id}`).el;
+        const imgWrapper = ElementFactory("div", "img-wrapper").el;
         const img = ElementFactory("img", "artist-picture", "", picture, `Photo de ${name}` ).el;
         const h2 = ElementFactory("h2", "artist-name", name).el;
         const pCountry = ElementFactory("p", "card-artist__country", `${city}, ${country.toUpperCase()}`).el;
@@ -58,7 +59,8 @@ export default function photographerTemplates(data) {
         const pPrice = ElementFactory("p", "card-artist__price", `${price}€/jour`).el;
 
         article.appendChild(link);
-        link.appendChild(img);
+        link.appendChild(imgWrapper)
+        imgWrapper.appendChild(img);
         link.appendChild(h2);
         article.appendChild(pCountry);
         article.appendChild(pTagline);
