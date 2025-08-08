@@ -1,6 +1,6 @@
 import { getPhotographers } from "../utils/getPhotographer.js";
 import photographerTemplates from "../templates/photographer.js"
-import {displayModal, initModal, closeModal} from "../utils/contactForm.js";
+import {displayModal, initModal, closeModal} from "../Components/contactForm.js";
 
 async function displayData(photographers) {
   // Instancie la section dans le dom ou inserer les cards photographers
@@ -10,7 +10,7 @@ async function displayData(photographers) {
   photographers.forEach((photographer) => {
     // On appelle photographer template en lui renseignant l'argument necessaire
     const model = photographerTemplates(photographer);
-    const card = model.renderCard();
+    const card = model.cardsHomepageTemplate();
 
     photographersSection.appendChild(card);
   });
@@ -23,6 +23,7 @@ async function init() {
   displayData(data.photographers);
 
 }
+
 
 
 init();

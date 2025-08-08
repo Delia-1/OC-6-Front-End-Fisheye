@@ -1,4 +1,4 @@
-import { ElementFactory } from "./FactoryPatterns.js";
+import { ElementFactory } from "../Factories/elementFactory.js";
 
 class Media {
   constructor(data) {
@@ -12,12 +12,16 @@ class Media {
 
  export class Picture extends Media {
   constructor(data) {
-    super(data),
+    super(data);
     this.image = data.image
   }
 
   render() {
-    const picture = ElementFactory("img", "picture", "", `assets/pics/${this.image}`, this.title);
+    const picture = ElementFactory.create("img", {
+      className: "picture",
+      src: `assets/pics/${this.image}`,
+      alt: this.title
+    });
     return picture.el;
   };
 
@@ -28,15 +32,16 @@ class Media {
 
 export class Video extends Media{
   constructor(data) {
-    super(data),
+    super(data);
     this.video = data.video;
   }
   render() {
-    const video = ElementFactory("video", "video", "", `assets/pics/${this.video}`, `video ${this.title}`, "", "", "", true ).el;
-    const source = ElementFactory("source", "video-source", "", `assets/pics/${this.video}`, "", "", "", "", "", "video/mp4").el;
-    video.appendChild(source);
-
-    return video;
+    const video = ElementFactory.create("video", {
+      className: "video",
+      src: `assets/pics/${this.video}`,
+      controls: true
+    });
+    return video.el;
   };
 
   getType() {

@@ -1,45 +1,60 @@
-import { MediaFactory, ElementFactory } from "../utils/FactoryPatterns.js";
+import { MediaFactory } from "../Factories/mediaFactory.js";
+import { ElementFactory } from "../Factories/elementFactory.js";
 
-// ordre des attributs: type, class, text, src, alt, ariaLabel, for
 
-// construction de la card picture
 export default function galleryTemplate(mediaData) {
 
   function createMediaCard(mediaItem) {
     const media = MediaFactory.create(mediaItem);
-    const article = ElementFactory("article", "card-picture").el;
+    const article = ElementFactory.create("article", { className: "card-picture" });
     const mediaElement = media.render();
-    const infoWrapper = ElementFactory("div", "pic-info-wrapper").el;
-    const artPieceTitle = ElementFactory("h3","picture__title", mediaItem.title).el;
-    const likesDiv = ElementFactory("div", "likes-div").el;
-    const nbLikes = ElementFactory("p", "picture__likes", mediaItem.likes).el;
-    const heartIcon = ElementFactory("img", "heart-icon", "", "assets/icons/heartIcon.png", "icon coeur" ).el;
+    const infoWrapper = ElementFactory.create("div", { className: "pic-info-wrapper" });
+    const artPieceTitle = ElementFactory.create("h3", {
+      className: "picture__title",
+      text: mediaItem.title
+    });
+    const likesDiv = ElementFactory.create("div", { className: "likes-div" });
+    const nbLikes = ElementFactory.create("p", {
+      className: "picture__likes",
+      text: mediaItem.likes
+    });
+    const heartIcon = ElementFactory.create("img", {
+      className: "heart-icon",
+      src: "assets/icons/heartIcon.png",
+      alt: "icon coeur"
+    });
 
-    article.appendChild(mediaElement);
-    article.appendChild(infoWrapper);
-    infoWrapper.appendChild(artPieceTitle);
-    infoWrapper.appendChild(likesDiv);
-    likesDiv.appendChild(nbLikes);
-    likesDiv.appendChild(heartIcon);
+    article.el.appendChild(mediaElement);
+    article.el.appendChild(infoWrapper.el);
+    infoWrapper.el.appendChild(artPieceTitle.el);
+    infoWrapper.el.appendChild(likesDiv.el);
+    likesDiv.el.appendChild(nbLikes.el);
+    likesDiv.el.appendChild(heartIcon.el);
 
-    return article;
+    return article.el;
   }
 
-// construction section de tri
   function getGalleryDOM() {
-    const reorderDiv = ElementFactory("div", "reoder-Div" ).el;
-    const selectLabel = ElementFactory("label", "select-label", "Trier par", "", "", "", "select-filter").el;
-    const container = ElementFactory("section", "gallery-container", "", "", "", "section des photographies" ).el;
+    const reorderDiv = ElementFactory.create("div", { className: "reoder-Div" });
+    const selectLabel = ElementFactory.create("label", {
+      className: "select-label",
+      text: "Trier par",
+      for: "select-filter"
+    });
+    const container = ElementFactory.create("section", {
+      className: "gallery-container",
+      ariaLabel: "section des photographies"
+    });
 
     mediaData.forEach((item) => {
       const card = createMediaCard(item);
-      container.appendChild(card);
+      container.el.appendChild(card);
     });
 
-    reorderDiv.appendChild(selectLabel);
+    reorderDiv.el.appendChild(selectLabel.el);
     const wrapper = document.createElement("div");
-    wrapper.appendChild(reorderDiv);
-    wrapper.appendChild(container);
+    wrapper.appendChild(reorderDiv.el);
+    wrapper.appendChild(container.el);
 
     return wrapper;
   }

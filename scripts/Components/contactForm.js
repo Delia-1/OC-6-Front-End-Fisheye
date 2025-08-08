@@ -30,6 +30,9 @@ export function initModal() {
   buttonModale.addEventListener("click", displayModal);
   buttonClose.addEventListener("click", closeModal);
 
+  // buttonModale.addEventListener("keydown", displayModal);
+  // buttonClose.addEventListener("keydown", closeModal);
+
   initForm();
 }
 

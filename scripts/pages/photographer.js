@@ -1,7 +1,7 @@
 import { getPhotographers } from "../utils/getPhotographer.js";
 import photographerTemplates from "../templates/photographer.js";
 import galleryTemplate from "../templates/galleryTemplate.js";
-import { initModal } from "../utils/contactForm.js";
+import { initModal } from "../Components/contactForm.js";
 
 async function displayDataProfilePage(photographer) {
   const headerSection = document.querySelector(".photograph-section");
