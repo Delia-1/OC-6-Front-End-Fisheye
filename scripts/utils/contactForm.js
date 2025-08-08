@@ -46,6 +46,8 @@ function initForm() {
     const email = formData.get("email")
     const message = formData.get("message")
     const formEntries = Object.fromEntries(formData.entries());
+    closeModal()
+    form.reset()
 
     console.log(
       "full data object", formEntries

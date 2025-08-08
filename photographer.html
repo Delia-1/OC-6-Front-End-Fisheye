@@ -41,25 +41,27 @@
             aria-label="Fermer le formulaire"
             src="assets/icons/close.svg"
             class="close-button"
+            name="close contact form"
           />
         </header>
         <form>
           <div>
-            <label for="contact_firstname">Prénom</label>
-            <input type="text" id="contact_firstname" name="firstname" />
-            <label for="contact_lastname">Nom</label>
-            <input type="text" id="contact_lastname" name="lastname" />
-            <label for="contact_email">Email</label>
-            <input type="email" id="contact_email" name="email" />
-            <label for="contact_message">Votre message</label>
+            <label for="contact_firstname" id="champ_prenom">Prénom</label>
+            <input type="text" id="contact_firstname" aria-labelledby="champ_prenom" name="firstname" />
+            <label for="contact_lastname" id="champ_nom_de_famille">Nom</label>
+            <input type="text" id="contact_lastname" aria-labelledby="champ_nom_de_famille" name="lastname" />
+            <label for="contact_email" id="champ_email">Email</label>
+            <input type="email" id="contact_email" aria-labelledby="champ_email" name="email" />
+            <label for="contact_message" id="champ_message">Votre message</label>
             <textarea
               class="contact_message"
               id="contact_message"
+              aria-labelledby="champ_message"
               name="message"
-              rows="4" cols="33"
+              rows="4" cols="45"
             ></textarea>
           </div>
-          <button class="send_button">Envoyer</button>
+          <button class="send_button" name="send" aria-controls="send_message">Envoyer</button>
         </form>
       </div>
     </div>
