@@ -6,7 +6,10 @@ export default function galleryTemplate(mediaData) {
 
   function createMediaCard(mediaItem) {
     const media = MediaFactory.create(mediaItem);
-    const article = ElementFactory.create("article", { className: "card-picture" });
+    const article = ElementFactory.create("article", {
+      className: "card-picture",
+      role: "button",
+      tabindex:"0" });
     const mediaElement = media.render();
     const infoWrapper = ElementFactory.create("div", { className: "pic-info-wrapper" });
     const artPieceTitle = ElementFactory.create("h3", {

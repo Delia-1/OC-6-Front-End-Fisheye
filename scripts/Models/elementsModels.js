@@ -2,6 +2,9 @@ export class ArticleElement {
   constructor(options = {}) {
     this.el = document.createElement("article");
     this.el.className = options.className || "";
+    this.el.role = options.role || "";
+    if(options.tabindex)
+      this.el.setAttribute("tabindex", options.tabindex || "");
     if (options.ariaLabel)
       this.el.setAttribute("aria-label", options.ariaLabel);
   }
