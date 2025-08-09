@@ -3,17 +3,15 @@ main {
 }
 
 #contact_modal {
-    display: none;
+  display: none;
 }
 
-
 .photograph-section {
-/* display: flex; */
-    background-color: #FAFAFA;
-    margin: 1.3em 0;
-    padding: 3.2em 3em;
-    /* align-items: center; */
-
+  /* display: flex; */
+  background-color: #fafafa;
+  margin: 1.3em 0;
+  padding: 3.2em 3em;
+  /* align-items: center; */
 }
 
 .photograph-info {
@@ -28,22 +26,22 @@ main {
   margin-top: -1.8em;
   /* padding-left: 3.2em; */
 
-    .info-wrapper__name {
-      font-size: 4em;
-      margin: 43px 0 0 0;
-      font-weight: 300;
-      color: var(--bg-secondary);
-    }
+  .info-wrapper__name {
+    font-size: 4em;
+    margin: 43px 0 0 0;
+    font-weight: 300;
+    color: var(--bg-secondary);
+  }
 
-    .info-wrapper__origin {
-      color: var(--bg-primary);
-      font-size: 1.5em ;
-      margin: 0px 0 0.8em 0;
-    }
+  .info-wrapper__origin {
+    color: var(--bg-primary);
+    font-size: 1.5em;
+    margin: 0px 0 0.8em 0;
+  }
 
-      .info-wrapper__tagLine {
-      font-size: 1.10em ;
-    }
+  .info-wrapper__tagLine {
+    font-size: 1.1em;
+  }
 }
 
 .btn-wrapper {
@@ -51,18 +49,15 @@ main {
   margin-top: 1.8em;
 }
 
+.artist-picture--ownpage {
+  width: 175%;
+  object-fit: cover;
+  transform: translate(-22%, -25%);
+  border-radius: 50%;
+}
 
-
-    .artist-picture--ownpage {
-    width: 175%;
-    object-fit: cover;
-    transform: translate(-22%, -25%);
-    border-radius: 50%;
-
-    }
-
-
-.contact_button, .send_button {
+.contact_button,
+.send_button {
   font-size: 20px;
   letter-spacing: 0.6px;
   font-weight: bold;
@@ -71,22 +66,23 @@ main {
   width: 170px;
   height: 70px;
   border: none;
-  background-color: #901C1C;
+  background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .send_button:focus-visible {
-  background-color: #EEEBD0;
+  background-color: #eeebd0;
   color: #000;
-  border: 4px solid var(--bg-primary)
+  border: 4px solid var(--bg-primary);
 }
 
-  button:focus {
-    outline: none;
-  }
+button:focus {
+  outline: none;
+}
 
-.contact_button:focus-visible, .contact_button:hover {
+.contact_button:focus-visible,
+.contact_button:hover {
   background-color: var(--bg-focus);
   color: #000;
   border: none;
@@ -116,14 +112,13 @@ main {
   border: 5px solid var(--bg-primary);
 }
 
-.picture, .video {
+.picture,
+.video {
   width: 350px;
   height: 300px;
   border-radius: 5px;
   object-fit: cover;
 }
-
-
 
 .pic-info-wrapper {
   display: flex;
@@ -137,16 +132,18 @@ main {
   padding-right: 10px;
 }
 
-.picture__title, .picture__likes, .heart-icon{
+.picture__title,
+.picture__likes,
+.heart-icon {
   color: var(--bg-primary);
   font-size: 24px;
   margin: 10px 0 0 6px;
 }
 
-.picture__title{
+.picture__title {
   font-weight: 400;
 }
-.picture__likes{
+.picture__likes {
   font-weight: 500;
 }
 
@@ -155,120 +152,119 @@ main {
   height: 18.35px;
   margin-top: 14px;
 }
-.heart-icon, .picture__likes {
+.heart-icon,
+.picture__likes {
   display: flex-end;
 }
 
-
-
 /* MODALE  */
 #main_wrapper[inert] {
-  /* display: none */
   z-index: 10;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   opacity: 40%;
   width: auto;
 }
 
 #contact_modal {
   position: fixed;
-  transform: translate(-50%, -50%);
   z-index: 100;
-  top: 56%;
+  top: 55%;
+  transform: translate(-50%, -50%);
   left: 50%;
 }
 
-
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 38vw;
-    max-height: 90vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 35px;
-    margin: auto;
+  border-radius: 5px;
+  background-color: #db8876;
+  width: min(38vw, 750px);
+  max-height: calc(100vh - 8vh);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 35px;
+  margin-bottom: 80px;
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
-    align-items: flex-start;
-    padding-top: 7px;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  padding-top: 7px;
 }
 
 .close-button {
-    cursor: pointer;
-    padding: 16px;
+  cursor: pointer;
+  padding: 16px;
 }
 
 .close-button:focus {
-outline: none;
+  outline: none;
 }
 
 .close-button:focus-visible {
-border: 4px solid var(--bg-primary);
-border-radius: 10%;
+  border: 4px solid var(--bg-primary);
+  border-radius: 10%;
 }
 
-
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    margin-top: 9px;
-    line-height: 68px;
+  font-size: 4em;
+  font-weight: normal;
+  margin: 9px 0;
+  line-height: 1em;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 8vh;
-    margin-bottom: 3vh;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 3vh;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 2em;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
 }
 
 form input {
   width: 100%;
-  height: 68px;
+  height: 7.5vh;
   border: none;
   border-radius: 5px;
-  font-size: 24px;
+  font-size: 2em;
 }
 textarea {
   font-size: 24px;
   width: 100%;
-  min-height: 150px;
+  /* min-height: 15vh; */
+  max-height: 18vh;
   resize: vertical; /* Permet à l'utilisateur d'agrandir en hauteur si besoin */
   padding: 1rem;
   border-radius: 6px;
   box-sizing: border-box;
 }
 
-form input:focus-visible, textarea:focus-visible{
+form input:focus-visible,
+textarea:focus-visible {
   border: 5px solid var(--bg-primary);
 }
 
-form input:focus, textarea:focus {
-    outline: none;
-  }
+form input:focus,
+textarea:focus {
+  outline: none;
+}
 
-label[for = "contact_message"] {
-margin-top: 10px;
+label[for="contact_message"] {
+  margin-top: 10px;
 }

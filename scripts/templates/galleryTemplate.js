@@ -4,12 +4,14 @@ import { ElementFactory } from "../Factories/elementFactory.js";
 
 export default function galleryTemplate(mediaData) {
 
-  function createMediaCard(mediaItem) {
+  function createMediaCard(mediaItem, index) {
     const media = MediaFactory.create(mediaItem);
     const article = ElementFactory.create("article", {
       className: "card-picture",
       role: "button",
-      tabindex:"0" });
+      tabindex: "0",
+      "data-index": index
+    });
     const mediaElement = media.render();
     const infoWrapper = ElementFactory.create("div", { className: "pic-info-wrapper" });
     const artPieceTitle = ElementFactory.create("h3", {
@@ -49,8 +51,8 @@ export default function galleryTemplate(mediaData) {
       ariaLabel: "section des photographies"
     });
 
-    mediaData.forEach((item) => {
-      const card = createMediaCard(item);
+    mediaData.forEach((item, index) => {
+      const card = createMediaCard(item, index);
       container.el.appendChild(card);
     });
 
