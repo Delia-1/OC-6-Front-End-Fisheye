@@ -6,7 +6,7 @@ export class ArticleElement {
     if(options.tabindex)
       this.el.setAttribute("tabindex", options.tabindex || "");
     if (options["data-index"] !== undefined) {
-      this.el.setAttribute("data-index", options["data-index"] || "");
+      this.el.setAttribute("data-index", options["data-index"]);
     if (options.ariaLabel)
       this.el.setAttribute("aria-label", options.ariaLabel);
   }

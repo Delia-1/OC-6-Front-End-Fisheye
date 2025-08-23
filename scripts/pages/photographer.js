@@ -2,6 +2,7 @@ import { getPhotographers } from "../utils/getPhotographer.js";
 import photographerTemplates from "../templates/photographer.js";
 import galleryTemplate from "../templates/galleryTemplate.js";
 import { initModal } from "../Components/contactForm.js";
+import { initLightBox } from "../Components/lightBox.js";
 
 async function displayDataProfilePage(photographer) {
   const headerSection = document.querySelector(".photograph-section");
@@ -17,20 +18,18 @@ async function displayDataProfilePage(photographer) {
   }
 }
 
-
-
-async function displayGalleryProfilePage( photographer) {
+async function displayGalleryProfilePage(mediaData) {
   const gallerySection = document.querySelector(".gallery-section")
-  const galleryModel = galleryTemplate(photographer);
+  const galleryModel = galleryTemplate(mediaData);
   const galleryDom = galleryModel.getGalleryDOM();
 
   gallerySection.appendChild(galleryDom)
-  // Initialisation de la modale une fois le Dom est chargé
-      initModal();
 
+  // Initialisation APRÈS que le DOM soit créé
+  initModal();
+  initLightBox(mediaData);
 }
 
-// To put in utils?
 function getphotographerId() {
   const urlParams = new URLSearchParams(window.location.search);
   return parseInt(urlParams.get('id'));

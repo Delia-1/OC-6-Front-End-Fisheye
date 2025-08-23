@@ -13,8 +13,6 @@ export function displayModal() {
 };
 
 
-// AUSSI BESOIN DE GERER LE CLAVIER EN ELISTENER
-
 export function closeModal() {
   modal.style.display = "none";
   modal.setAttribute("inert", "")
