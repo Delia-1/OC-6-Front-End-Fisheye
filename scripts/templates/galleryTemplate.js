@@ -1,7 +1,6 @@
 import { MediaFactory } from "../Factories/mediaFactory.js";
 import { ElementFactory } from "../Factories/elementFactory.js";
 
-
 export default function galleryTemplate(mediaData) {
 
   function createMediaCard(mediaItem, index) {
@@ -10,7 +9,8 @@ export default function galleryTemplate(mediaData) {
       className: "card-picture",
       role: "button",
       tabindex: "0",
-      "data-index": index
+      "data-index": index,
+      "aria-label": `Ouvrir ${mediaItem.title} en grand format`
     });
     const mediaElement = media.render();
     const infoWrapper = ElementFactory.create("div", { className: "pic-info-wrapper" });
