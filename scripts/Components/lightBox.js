@@ -1,7 +1,7 @@
 import lightBoxTemplate from "../templates/lightboxTemplate.js";
 import { MediaFactory } from "../Factories/mediaFactory.js";
 
-// const main = document.getElementById("main_wrapper");
+const main = document.getElementById("main_wrapper");
 const body = document.querySelector("body");
 
 let currentMediaData = [];
@@ -12,7 +12,6 @@ let currentIndex = 0;
 
 export function initLightBox(mediaData) {
     currentMediaData = mediaData;
-
     const cardLinks = document.querySelectorAll(".card-picture");
 
     cardLinks.forEach((card, index) => {
@@ -23,7 +22,7 @@ export function initLightBox(mediaData) {
             displayLightbox(index);
         });
 
-        // Événement clavier
+        // clavier
         card.addEventListener("keydown", (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -34,43 +33,36 @@ export function initLightBox(mediaData) {
 }
 
 export function displayLightbox(mediaIndex) {
-    console.log("🚀 Ouverture lightbox pour index:", mediaIndex);
 
     currentIndex = mediaIndex
-
-    if (lightboxElement) {
-      lightboxElement.remove();
-      lightboxElement = null;
-    }
-
-
     const selectedMedia = currentMediaData[currentIndex];
+
     lightboxElement = lightBoxTemplate(selectedMedia);
     document.body.appendChild(lightboxElement);
 
-    // bloquer le body
     body.classList.add("lightbox-open");
-    lightboxElement.focus();
-    console.log("✅ Lightbox ouverte");
+    main.setAttribute('inert','');
 
+    lightboxElement.focus();
+    document.addEventListener("keydown", handleKeyboardEvent);
     initLightboxEvents();
 }
 
 export function closeLightbox() {
   if (!lightboxElement) return;
 
+  document.removeEventListener("keydown", handleKeyboardEvent);
+
   lightboxElement.remove();
   lightboxElement = null;
 
   body.classList.remove("lightbox-open");
-
-  console.log(" Lightbox fermée");
+  main.removeAttribute('inert');
 }
 
 export function navigatePrevPic() {
 
   const prevIndex = (currentIndex > 0? currentIndex - 1 : currentMediaData.length - 1);
-  // style pour la fleche si index 0
 
   updateLightBox(prevIndex)
 }
@@ -94,51 +86,57 @@ function updateLightBox(newIndex) {
   newMediaElement.classList.add("lightbox-media");
 
   const old = imageSection.querySelector(".lightbox-media");
-  if (old) imageSection.replaceChild(newMediaElement, old);
-  else imageSection.prepend(newMediaElement)
+  imageSection.replaceChild(newMediaElement, old);
 
-  if (lightboxTitle) lightboxTitle.textContent = newMedia.title ?? "";
+  lightboxTitle.textContent = newMedia.title ?? "";
 
 }
 
 function initLightboxEvents() {
-  const closeButton = document.querySelector(".close-lightbox");
-  const prevButton = document.querySelector(".prevButton");
-  const nextButton = document.querySelector(".nextButton");
+  const closeButton = lightboxElement.querySelector(".close-lightbox");
+  const prevButton = lightboxElement.querySelector(".prevButton");
+  const nextButton = lightboxElement.querySelector(".nextButton");
 
-    closeButton.addEventListener("click", closeLightbox);
+  closeButton.addEventListener("click", closeLightbox);
 
     prevButton.addEventListener("click", (e) => {
       e.preventDefault();
       navigatePrevPic();
     });
+
     nextButton.addEventListener("click", (e) => {
       e.preventDefault();
-      navigateNextPic();
+        navigateNextPic();
+
     });
+  };
 
+  const handleKeyboardEvent = (e) => {
+    if (!lightboxElement) return;
 
-    // Gestion clavier pour le bouton fermer
-    closeButton.addEventListener("keydown", (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
+    switch (e.key) {
+      case "Escape":
         closeLightbox();
-      }
-    });
-
-    // Gestion de la touche Escape
-    const handleEscape = (e) => {
-        if (e.key === 'Escape') {
+        console.log("j'entre dans switch escape")
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        navigatePrevPic();
+        break;
+      case"ArrowRight":
+        e.preventDefault();
+        navigateNextPic();
+        break;
+      case "Enter":
+      case " ":
+        const activeElement = document.activeElement;
+        if (activeElement.classList.contains("close-lightbox")) {
           closeLightbox();
-          document.removeEventListener('keydown', handleEscape);
+        } else if (activeElement.classList.contains("prevButton")) {
+          navigatePrevPic();
+        } else if (activeElement.classList.contains("nextButton")) {
+          navigateNextPic();
         }
-    };
-    document.addEventListener('keydown', handleEscape);
-
-        // Nettoyer l'event listener à la fermeture
-    const originalCloseLightbox = closeLightbox;
-    window.closeLightbox = () => {
-        document.removeEventListener('keydown', handleEscape);
-        originalCloseLightbox();
-    };
-}
+        break;
+    }
+  }

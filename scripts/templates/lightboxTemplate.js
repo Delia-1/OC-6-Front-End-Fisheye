@@ -9,9 +9,9 @@ export default function lightBoxTemplate(mediaItem) {
         className: "lightbox-container",
         id: "lightbox_modal",
         role: "dialog",
-        "aria-labelledby": "lightbox_title",
+        "aria-label": "image closeup view",
         "aria-modal": "true",
-        tabIndex : "-1"
+        tabindex : "-1"
     });
 
     const overlay = ElementFactory.create("div", {
@@ -24,7 +24,7 @@ export default function lightBoxTemplate(mediaItem) {
 
     const closeLightbox = ElementFactory.create("button", {
         className: "close-lightbox",
-        "aria-label": "Fermer la lightbox",
+        "aria-label": "Close dialog",
     });
 
     const closeIcon = ElementFactory.create("img", {
@@ -36,6 +36,8 @@ export default function lightBoxTemplate(mediaItem) {
     const prevButton = ElementFactory.create("button", {
       className: "prevButton",
       "aria-label": "Previous image",
+      tabindex: "0",
+      "aria-label": `Previous image`
     })
 
     const prevIcon = ElementFactory.create("img", {
@@ -46,6 +48,8 @@ export default function lightBoxTemplate(mediaItem) {
         const nextButton = ElementFactory.create("button", {
       className: "nextButton",
       "aria-label": "Next image",
+      tabindex: "0",
+      "aria-label": `Next image`
     })
 
     const nextIcon = ElementFactory.create("img", {
@@ -60,15 +64,15 @@ export default function lightBoxTemplate(mediaItem) {
 
     const lightboxMedia = mediaElement.cloneNode(true);
     lightboxMedia.className = "lightbox-media";
+    lightboxMedia.setAttribute("aria-label", mediaItem.title);
 
-    // Titre
+
     const pictureDesc = ElementFactory.create("h2", {
         className: "lightbox-title",
         id: "lightbox_title",
         text: mediaItem.title
     });
 
-    // Assemblage dans le bon ordre
     lightboxContainer.el.appendChild(overlay.el);
     lightboxContainer.el.appendChild(lightboxContent.el);
 
