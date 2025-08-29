@@ -96,3 +96,13 @@ export class SectionElement {
       this.el.setAttribute("aria-label", options.ariaLabel);
   }
 }
+
+export class AsideElement {
+  constructor(options = {}) {
+    this.el = document.createElement("aside");
+    this.el.className = options.className || "";
+    this.el.textContent = options.text || "";
+    if (options.ariaLabel)
+      this.el.setAttribute("aria-label", options.ariaLabel);
+  }
+}

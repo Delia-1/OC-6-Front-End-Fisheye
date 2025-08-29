@@ -8,7 +8,8 @@ import {
   VideoElement,
   LabelElement,
   LinkElement,
-  ButtonElement
+  ButtonElement,
+  AsideElement
 } from '../Models/elementsModels.js';
 
 
@@ -37,6 +38,8 @@ export class ElementFactory {
         return new LinkElement(options);
       case "button":
         return new ButtonElement(options);
+      case "aside":
+        return new AsideElement(options)
       default:
         throw new Error(`Type d'element ${elementType} non supporté`);
     }

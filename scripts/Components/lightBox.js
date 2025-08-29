@@ -12,7 +12,7 @@ let currentIndex = 0;
 
 export function initLightBox(mediaData) {
     currentMediaData = mediaData;
-    const cardLinks = document.querySelectorAll(".card-picture");
+    const cardLinks = document.querySelectorAll(".picture");
 
     cardLinks.forEach((card, index) => {
 

@@ -64,6 +64,31 @@ export async function init() {
 
   await displayDataProfilePage(rightPhotographer)
   await displayGalleryProfilePage(goodPics)
+
+  handleLikes()
 }
+
+const updateTotalLikes = (increment) => {
+  const totalLikesEl = document.querySelector(".nb-total-likes");
+  let currentTotal = parseInt(totalLikesEl.textContent)
+  totalLikesEl.textContent = String(currentTotal + increment);
+}
+
+const handleLikes = () => {
+  const likesDiv = document.querySelectorAll(".likes-div")
+
+  likesDiv.forEach(div => {
+    const likeButton = div.querySelector(".heart-icon")
+    const nbLikes = div.querySelector(".picture__likes")
+
+     likeButton.addEventListener("click", (e) => {
+      let currentLikes = parseInt(div.querySelector(".picture__likes").textContent);
+      nbLikes.textContent = String(currentLikes + 1)
+
+      updateTotalLikes(1);
+    })
+  });
+}
+
 
 init();

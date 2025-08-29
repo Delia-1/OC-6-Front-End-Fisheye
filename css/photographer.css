@@ -153,9 +153,45 @@ button:focus {
   height: 18.35px;
   margin-top: 14px;
 }
-.heart-icon,
-.picture__likes {
-  display: flex-end;
+
+/* className:"total-likes-div"})
+className: "nb-total-likes",
+className: "heart-icon-total",
+className:"average-price-div"}) */
+
+
+.media-info-div {
+  position: fixed;
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  bottom: 0;
+  right: 40px;
+  width: 376px;
+  height: 70px;
+  background-color: var(--aside);
+
+/* align-items: center; */
+font-weight: 500;
+font-size: 24px;
+}
+
+.total-likes-div {
+display: flex;
+align-items: center;
+/* font-weight: 500;
+font-size: 24px; */
+}
+
+.heart-icon-total {
+  color: #000;
+  width: 17.5px;
+  height: 18.35px;
+  padding-left: 3px;
+}
+
+.nb-total-likes {
+  display: inline-block;
 }
 
 /* MODALE  */
