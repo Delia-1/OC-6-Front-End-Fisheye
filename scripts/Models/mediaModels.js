@@ -10,41 +10,47 @@ class Media {
   }
 }
 
- export class Picture extends Media {
+export class Picture extends Media {
   constructor(data) {
     super(data);
-    this.image = data.image
+    this.image = data.image;
   }
 
   render() {
     const picture = ElementFactory.create("img", {
-      className: "picture",
+      className: "media",
       src: `assets/pics/${this.image}`,
-      alt: this.title
+      alt: this.title,
     });
     return picture.el;
-  };
+  }
 
   getType() {
-    return 'image';
+    return "image";
   }
-};
+}
 
-export class Video extends Media{
+export class Video extends Media {
   constructor(data) {
     super(data);
     this.video = data.video;
   }
   render() {
     const video = ElementFactory.create("video", {
-      className: "video",
+      className: "media",
       src: `assets/pics/${this.video}`,
-      controls: true
+      controls: true,
+      preload: "metadata",
+      playsinline: true,
+      role: "button",
+      tabindex: "0",
+      ariaLabel: "Ouvrir Wooden sculpture of a horse en grand format",
     });
+
     return video.el;
-  };
+  }
 
   getType() {
-    return 'video';
+    return "video";
   }
-};
+}

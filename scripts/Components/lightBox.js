@@ -12,18 +12,20 @@ let currentIndex = 0;
 
 export function initLightBox(mediaData) {
     currentMediaData = mediaData;
-    const cardLinks = document.querySelectorAll(".picture");
+    const mediaLinks = document.querySelectorAll(".media");
 
-    cardLinks.forEach((card, index) => {
+    mediaLinks.forEach((media, index) => {
 
         // clique
-        card.addEventListener("click", (e) => {
+        media.addEventListener("click", (e) => {
             e.preventDefault();
             displayLightbox(index);
+            console.log("open", index)
         });
 
+
         // clavier
-        card.addEventListener("keydown", (e) => {
+        media.addEventListener("keydown", (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 displayLightbox(index);
@@ -31,6 +33,8 @@ export function initLightBox(mediaData) {
         });
     });
 }
+
+
 
 export function displayLightbox(mediaIndex) {
 
@@ -84,6 +88,9 @@ function updateLightBox(newIndex) {
   const media = MediaFactory.create(newMedia);
   const newMediaElement = media.render();
   newMediaElement.classList.add("lightbox-media");
+  newMediaElement.classList.remove("media");
+
+
 
   const old = imageSection.querySelector(".lightbox-media");
   imageSection.replaceChild(newMediaElement, old);

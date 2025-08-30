@@ -20,16 +20,14 @@ const calculateAveragePrice = (mediaData) => {
 
 export default function galleryTemplate(mediaData) {
 
-  function createMediaCard(mediaItem, index) {
+  function createMediaCard(mediaItem) {
     const media = MediaFactory.create(mediaItem);
+    const mediaElement = media.render();
+
     const article = ElementFactory.create("article", {
       className: "card-picture",
-      role: "button",
-      tabindex: "0",
-      "data-index": index,
-      "aria-label": `Ouvrir ${mediaItem.title} en grand format`
     });
-    const mediaElement = media.render();
+
     const infoWrapper = ElementFactory.create("div", { className: "pic-info-wrapper" });
     const artPieceTitle = ElementFactory.create("h3", {
       className: "picture__title",

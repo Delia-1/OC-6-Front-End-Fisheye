@@ -112,12 +112,12 @@ button:focus {
   border: 5px solid var(--primary);
 }
 
-.picture,
-.video {
+.media {
   width: 350px;
   height: 300px;
   border-radius: 5px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .pic-info-wrapper {
@@ -139,6 +139,7 @@ button:focus {
   color: var(--primary);
   font-size: 24px;
   margin: 10px 0 0 6px;
+  cursor: pointer;
 }
 
 .picture__title {
@@ -383,7 +384,7 @@ body.lightbox-open {
   padding: 0 40px;
 }
 
-.lightbox-media {
+.lightbox-media, picture .lightbox-media {
   max-width: 85vw;
   max-height: 80vh;
   object-fit: contain;
@@ -399,6 +400,7 @@ body.lightbox-open {
 .prevButton, .nextButton {
   border: none;
   background: none;
+  cursor: pointer;
 }
 
 .prevButton:focus-visible, .nextButton:focus-visible {
