@@ -3,6 +3,7 @@ import photographerTemplates from "../templates/photographer.js";
 import galleryTemplate from "../templates/galleryTemplate.js";
 import { initModal } from "../Components/contactForm.js";
 import { initLightBox } from "../Components/lightBox.js";
+import { toggleOptions} from "../Components/reorderAside.js";
 
 async function displayDataProfilePage(photographer) {
   const headerSection = document.querySelector(".photograph-section");
@@ -11,24 +12,28 @@ async function displayDataProfilePage(photographer) {
 
   headerSection.appendChild(headerDOM);
 
-  // Personnaliser le titre de la modale
   const modalTitle = document.getElementById("modal_title");
   if (modalTitle) {
     modalTitle.innerHTML = `Contactez-moi ${photographer.name}`;
   }
 }
 
+
 async function displayGalleryProfilePage(mediaData) {
   const gallerySection = document.querySelector(".gallery-section")
+  const reorderSection = document.getElementById("reorder-section")
   const galleryModel = galleryTemplate(mediaData);
-  const galleryDom = galleryModel.getGalleryDOM();
+  const {galleryContent, reorderMenu} = galleryModel.getGalleryDOM();
 
-  gallerySection.appendChild(galleryDom)
+  gallerySection.appendChild(galleryContent)
+  reorderSection.appendChild(reorderMenu)
 
-  // Initialisation APRÈS que le DOM soit créé
   initModal();
+  toggleOptions(mediaData)
   initLightBox(mediaData);
 }
+
+
 
 function getphotographerId() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -57,38 +62,42 @@ export async function init() {
    const goodPics = await getRightPics();
    const rightPhotographer = data.photographers.find(p => p.id === photographId);
 
-   if (!rightPhotographer) {
-    console.error('Photographe non trouvé');
-    return;
-  }
-
   await displayDataProfilePage(rightPhotographer)
   await displayGalleryProfilePage(goodPics)
 
   handleLikes()
 }
 
-const updateTotalLikes = (increment) => {
-  const totalLikesEl = document.querySelector(".nb-total-likes");
-  let currentTotal = parseInt(totalLikesEl.textContent)
-  totalLikesEl.textContent = String(currentTotal + increment);
-}
 
-const handleLikes = () => {
+export const handleLikes = () => {
   const likesDiv = document.querySelectorAll(".likes-div")
+  // const totalLikesEl = document.querySelector(".nb-total-likes");
 
-  likesDiv.forEach(div => {
+
+  likesDiv.forEach((div, index) => {
     const likeButton = div.querySelector(".heart-icon")
     const nbLikes = div.querySelector(".picture__likes")
 
-     likeButton.addEventListener("click", (e) => {
+
+    const newLikeButton = likeButton.cloneNode(true);
+    likeButton.parentNode.replaceChild(newLikeButton, likeButton)
+
+
+    newLikeButton.addEventListener("click", (e) => {
       let currentLikes = parseInt(div.querySelector(".picture__likes").textContent);
       nbLikes.textContent = String(currentLikes + 1)
-
       updateTotalLikes(1);
     })
   });
 }
+
+const updateTotalLikes = (increment) => {
+  const totalLikesEl = document.querySelector(".nb-total-likes");
+
+  let currentTotal = parseInt(totalLikesEl.textContent)
+  totalLikesEl.textContent = String(currentTotal + increment);
+}
+
 
 
 init();

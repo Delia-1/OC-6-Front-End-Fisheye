@@ -52,35 +52,15 @@ export default function galleryTemplate(mediaData) {
     likesDiv.el.appendChild(heartIcon.el);
 
     return article.el;
-    // export default heartIcon;
   }
 
   function getGalleryDOM() {
 
-    const galleryWrapper = document.getElementById("main_wrapper");
-    const mediaInfoDiv = ElementFactory.create("aside", { className:"media-info-div"})
-    const totalLikesDiv = ElementFactory.create("div", {className:"total-likes-div"})
-    const nbTotalLikes = ElementFactory.create("p", {
-      className: "nb-total-likes",
-      text: calculateTotalLikes(mediaData)
-     })
-    const heartIconTotal = ElementFactory.create("img", {
-      className: "heart-icon-total",
-      src: "assets/icons/heartIconBlack.png",
-      alt: "likes"
+    const reorderDiv = ElementFactory.create("aside", {
+      className: "reorder-div",
+      open: false,
     });
-    const averagePriceDiv = ElementFactory.create("div", {className:"average-price-div"})
-    const averagePrice = ElementFactory.create("p", {
-      className: "average-price",
-      text: `${calculateAveragePrice(mediaData)}€ / jour`})
 
-
-    const reorderDiv = ElementFactory.create("div", { className: "reoder-div" });
-    const selectLabel = ElementFactory.create("label", {
-      className: "select-label",
-      text: "Trier par",
-      for: "select-filter"
-    });
     const container = ElementFactory.create("section", {
       className: "gallery-container",
       ariaLabel: "section des photographies"
@@ -90,8 +70,27 @@ export default function galleryTemplate(mediaData) {
       const card = createMediaCard(item, index);
       container.el.appendChild(card);
     });
+    const mediaInfoDiv = ElementFactory.create("aside", { className:"media-info-div"})
 
-    galleryWrapper.appendChild(mediaInfoDiv.el);
+    const totalLikesDiv = ElementFactory.create("div", {className:"total-likes-div"})
+    const nbTotalLikes = ElementFactory.create("p", {
+      className: "nb-total-likes",
+      text: calculateTotalLikes(mediaData)
+     })
+
+    const heartIconTotal = ElementFactory.create("img", {
+      className: "heart-icon-total",
+      src: "assets/icons/heartIconBlack.png",
+      alt: "likes"
+    });
+
+    const averagePriceDiv = ElementFactory.create("div", {className:"average-price-div"})
+    const averagePrice = ElementFactory.create("p", {
+      className: "average-price",
+      text: `${calculateAveragePrice(mediaData)}€ / jour`})
+
+    const wrapper = document.createElement("div");
+
     mediaInfoDiv.el.appendChild(totalLikesDiv.el);
     totalLikesDiv.el.appendChild(nbTotalLikes.el);
     totalLikesDiv.el.appendChild(heartIconTotal.el);
@@ -99,12 +98,10 @@ export default function galleryTemplate(mediaData) {
     mediaInfoDiv.el.appendChild(averagePriceDiv.el);
     averagePriceDiv.el.appendChild(averagePrice.el);
 
-    reorderDiv.el.appendChild(selectLabel.el);
-    const wrapper = document.createElement("div");
-    wrapper.appendChild(reorderDiv.el);
     wrapper.appendChild(container.el);
+    wrapper.appendChild(mediaInfoDiv.el);
 
-    return wrapper;
+    return {galleryContent: wrapper, reorderMenu: reorderDiv.el }
   }
 
   return { getGalleryDOM };
