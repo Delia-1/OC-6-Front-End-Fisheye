@@ -2,34 +2,60 @@ const modal = document.getElementById("contact_modal");
 const main = document.getElementById("main_wrapper");
 const body = document.querySelector("body")
 
+const handleEscapeModal = (e) => {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+}
+
 export function displayModal() {
   modal.style.display = "block";
   modal.removeAttribute("inert")
+  modal.setAttribute("tabindex", "-1")
+  modal.focus()
+
   main.setAttribute("inert", "")
   body.classList.add("modal-open")
-  // main.style.position = ("relative")
+  document.addEventListener("keydown", handleEscapeModal)
+
   main.style.overflowY = "hidden"
-  console.log("modal opened")
 };
 
 
-export function closeModal() {
+export const closeModal = () => {
+  const contactButton = document.querySelector(".contact_button");
   modal.style.display = "none";
   modal.setAttribute("inert", "")
+  modal.removeAttribute("tabindex", "-1")
   main.removeAttribute("inert")
   body.classList.remove("modal-open")
-  console.log("modal closed")
+
+  document.removeEventListener("keydown", handleEscapeModal)
+  if (contactButton) {
+   contactButton.focus();
+   console.log("hello du focus du contact btn")
+  }
+
 
 }
-export function initModal() {
+export const initModal = () => {
   const buttonModale = document.querySelector(".contact_button");
   const buttonClose = document.querySelector(".close-button");
 
   buttonModale.addEventListener("click", displayModal);
+  buttonModale.addEventListener("keydown", (e) => {
+   if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    displayModal();
+   }
+  })
   buttonClose.addEventListener("click", closeModal);
-
-  // buttonModale.addEventListener("keydown", displayModal);
-  // buttonClose.addEventListener("keydown", closeModal);
+  buttonClose.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " " ) {
+      e.preventDefault();
+      closeModal();
+    }
+  })
 
   initForm();
 }
