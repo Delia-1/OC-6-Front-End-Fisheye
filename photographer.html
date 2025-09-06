@@ -25,6 +25,7 @@
             aria-controls="contact_modal"
             aria-expanded="false"
             tabindex="0"
+            aria-label="contact me"
           >
             Contactez-moi
           </button>
@@ -37,7 +38,7 @@
     <div id="contact_modal" role="dialog" aria-labelledby="modal_title" inert>
       <div class="modal">
         <header>
-          <h2 id="modal_title">Contactez-moi</h2>
+          <h1 id="modal_title">Contactez-moi</h1>
           <img
             role="button"
             tabindex="0"
@@ -50,23 +51,23 @@
         </header>
         <form>
           <div>
-            <label for="contact_firstname" id="champ_prenom" tabindex="-1">Prénom</label>
-            <input type="text" id="contact_firstname" aria-labelledby="champ_prenom" name="firstname" tabindex="0"/>
-            <label for="contact_lastname" id="champ_nom_de_famille" tabindex="-1">Nom</label>
-            <input type="text" id="contact_lastname" aria-labelledby="champ_nom_de_famille" name="lastname" tabindex="0" />
-            <label for="contact_email" id="champ_email" tabindex="-1">Email</label>
-            <input type="email" id="contact_email" aria-labelledby="champ_email" name="email" tabindex="0"/>
-            <label for="contact_message" id="champ_message" tabindex="-1">Votre message</label>
+            <label for="contact_firstname" id="First-name" tabindex="-1">Prénom</label>
+            <input type="text" id="contact_firstname" aria-labelledby="First-name" name="firstname" tabindex="0"/>
+            <label for="contact_lastname" id="Last-name" tabindex="-1">Nom</label>
+            <input type="text" id="contact_lastname" aria-labelledby="Last-name" name="lastname" tabindex="0" />
+            <label for="contact_email" id="Email" tabindex="-1">Email</label>
+            <input type="email" id="contact_email" aria-labelledby="Email" name="email" tabindex="0"/>
+            <label for="contact_message" id="Your-message" tabindex="-1">Votre message</label>
             <textarea
               class="contact_message"
               id="contact_message"
-              aria-labelledby="champ_message"
+              aria-labelledby="Your-message"
               name="message"
               rows="4" cols="45"
               tabindex="0"
             ></textarea>
           </div>
-          <button class="send_button" name="send" aria-controls="send_message">Envoyer</button>
+          <button class="send_button" aria-label="Send" name="send" aria-controls="send_message">Envoyer</button>
 
         </form>
       </div>
