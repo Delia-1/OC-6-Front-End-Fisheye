@@ -3,28 +3,33 @@ export class ArticleElement {
     this.el = document.createElement("article");
     this.el.className = options.className || "";
     this.el.role = options.role || "";
-    if(options.tabindex)
+    if (options.tabindex)
       this.el.setAttribute("tabindex", options.tabindex || "");
     if (options["data-index"] !== undefined) {
       this.el.setAttribute("data-index", options["data-index"]);
-    if (options.ariaLabel)
-      this.el.setAttribute("aria-label", options.ariaLabel);
+      if (options.ariaLabel)
+        this.el.setAttribute("aria-label", options.ariaLabel);
+    }
   }
-}
 }
 
 export class DivElement {
   constructor(options = {}) {
     this.el = document.createElement("div");
     this.el.className = options.className || "";
+    this.el.id = options.id;
     if (options.ariaLabel)
       this.el.setAttribute("aria-label", options.ariaLabel);
+    if (options.tabindex) this.el.setAttribute("tabindex", "0");
+    if (options.role) this.el.setAttribute("role", options.role);
+    if (options.ariaLabelledby)
+      this.el.setAttribute("aria-labelledby", options.ariaLabelledby);
   }
 }
 
 export class HeadingElement {
   constructor(tagName, options = {}) {
-    this.el = document.createElement(tagName); // h1, h2, h3
+    this.el = document.createElement(tagName);
     this.el.className = options.className || "";
     this.el.textContent = options.text || "";
     if (options.ariaLabel)
@@ -46,6 +51,8 @@ export class ImageElement {
     this.el.className = options.className || "";
     this.el.src = options.src || "";
     this.el.alt = options.alt || "";
+    if (options.ariaHidden)
+      this.el.setAttribute("aria-hidden", options.ariaHidden);
   }
 }
 
@@ -63,6 +70,7 @@ export class LabelElement {
     this.el = document.createElement("label");
     this.el.className = options.className || "";
     this.el.textContent = options.text || "";
+    this.el.id = options.id;
     if (options.for) this.el.setAttribute("for", options.for);
   }
 }
@@ -82,9 +90,20 @@ export class ButtonElement {
   constructor(options = {}) {
     this.el = document.createElement("button");
     this.el.className = options.className || "";
-    this.el.textContent = options.text || "";
+    this.el.id = options.id;
+    this.el.textContent = options.textContent;
     if (options.ariaLabel)
       this.el.setAttribute("aria-label", options.ariaLabel);
+    if (options.ariaHaspopup)
+      this.el.setAttribute("aria-haspopup", options.ariaHaspopup);
+    if (options.ariaExpanded)
+      this.el.setAttribute("aria-expanded", options.ariaExpanded);
+    if (options.ariaLabelledby)
+      this.el.setAttribute("aria-labelledby", options.ariaLabelledby);
+    if (options.ariaSelected)
+      this.el.setAttribute("aria-selected", options.ariaSelected);
+    if (options.tabindex) this.el.setAttribute("tabindex", options.tabindex);
+    if (options.role) this.el.setAttribute("role", options.role);
   }
 }
 
@@ -104,5 +123,6 @@ export class AsideElement {
     this.el.textContent = options.text || "";
     if (options.ariaLabel)
       this.el.setAttribute("aria-label", options.ariaLabel);
+    if (options.tabindex) this.el.setAttribute("tabindex", options.tabindex);
   }
 }
