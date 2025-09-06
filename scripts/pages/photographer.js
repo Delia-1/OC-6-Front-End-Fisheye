@@ -20,7 +20,6 @@ async function displayDataProfilePage(photographer) {
 
 async function displayGalleryProfilePage(mediaData) {
   const gallerySection = document.querySelector(".gallery-section");
-  const reorderSection = document.getElementById("reorder-section");
   const galleryModel = galleryTemplate(mediaData);
   const { galleryContent } = galleryModel.getGalleryDOM();
 

@@ -41,7 +41,11 @@ h1 {
 a:focus {
   outline: none;
 }
-
+a:focus-visible {
+  padding: 4px 0;
+  border: 3px solid var(--primary);
+  border-radius: 4px;
+}
 
 .photographer_section {
   display: grid;
@@ -85,11 +89,7 @@ a:focus {
     margin: 2px 0 0 0;
   }
 }
-a:focus-visible {
-  padding: 4px;
-  border: 3px solid var(--primary);
-  border-radius: 4px;
-}
+
 
 .img-wrapper {
   width: 200px;
