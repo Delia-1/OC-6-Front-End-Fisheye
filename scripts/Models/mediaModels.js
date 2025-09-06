@@ -21,6 +21,9 @@ export class Picture extends Media {
       className: "media",
       src: `assets/pics/${this.image}`,
       alt: this.title,
+      role: "button",
+      tabindex: "0",
+      ariaLabel: `Open in lightbox`,
     });
     return picture.el;
   }
@@ -39,12 +42,12 @@ export class Video extends Media {
     const video = ElementFactory.create("video", {
       className: "media",
       src: `assets/pics/${this.video}`,
-      controls: true,
+      controls: false,
       preload: "metadata",
       playsinline: true,
       role: "button",
       tabindex: "0",
-      ariaLabel: "Ouvrir Wooden sculpture of a horse en grand format",
+      ariaLabel: `Open in lightbox`,
     });
 
     return video.el;

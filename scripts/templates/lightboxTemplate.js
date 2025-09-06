@@ -24,18 +24,17 @@ export default function lightBoxTemplate(mediaItem) {
 
     const closeLightbox = ElementFactory.create("button", {
         className: "close-lightbox",
-        "aria-label": "Close dialog",
+        "aria-label": "Close Light-Box from button",
     });
 
     const closeIcon = ElementFactory.create("img", {
       className: "close-icon",
       src: "assets/icons/closeLB.png",
-      alt: "Fermer la lightbox"
+      alt: "close light-box",
     })
 
     const prevButton = ElementFactory.create("button", {
       className: "prevButton",
-      "aria-label": "Previous image",
       tabindex: "0",
       "aria-label": `Previous image`
     })
@@ -47,7 +46,6 @@ export default function lightBoxTemplate(mediaItem) {
     })
         const nextButton = ElementFactory.create("button", {
       className: "nextButton",
-      "aria-label": "Next image",
       tabindex: "0",
       "aria-label": `Next image`
     })

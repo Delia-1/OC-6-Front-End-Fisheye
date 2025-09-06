@@ -1,5 +1,6 @@
 import { MediaFactory } from "../Factories/mediaFactory.js";
 import { ElementFactory } from "../Factories/elementFactory.js";
+import { handleLikes } from "../pages/photographer.js";
 
 const calculateTotalLikes = (mediaData) => {
   let nbLikes = 0;
@@ -14,7 +15,7 @@ const calculateAveragePrice = (mediaData) => {
   mediaData.forEach((media) => {
     totalPrice += media.price;
   })
-  const averagePrice = totalPrice / (mediaData.length)
+  const averagePrice = Math.round(totalPrice / (mediaData.length))
   return averagePrice;
 }
 
@@ -24,11 +25,15 @@ export default function galleryTemplate(mediaData) {
     const media = MediaFactory.create(mediaItem);
     const mediaElement = media.render();
 
+    mediaElement.setAttribute("tabindex", "0");
+    mediaElement.setAttribute("role", "button");
+    mediaElement.setAttribute("aria-label", `${mediaItem.title}, closeup view`);
+
     const article = ElementFactory.create("article", {
       className: "card-picture",
     });
 
-    const infoWrapper = ElementFactory.create("div", { className: "pic-info-wrapper" });
+    const infoWrapper = ElementFactory.create("div", {className: "pic-info-wrapper",});
     const artPieceTitle = ElementFactory.create("h3", {
       className: "picture__title",
       text: mediaItem.title
@@ -41,7 +46,7 @@ export default function galleryTemplate(mediaData) {
     const heartIcon = ElementFactory.create("img", {
       className: "heart-icon",
       src: "assets/icons/heartIcon.png",
-      alt: "likes"
+      alt: "likes, press enter to like"
     });
 
     article.el.appendChild(mediaElement);
@@ -56,11 +61,6 @@ export default function galleryTemplate(mediaData) {
 
   function getGalleryDOM() {
 
-    const reorderDiv = ElementFactory.create("aside", {
-      className: "reorder-div",
-      open: false,
-    });
-
     const container = ElementFactory.create("section", {
       className: "gallery-container",
       ariaLabel: "section des photographies"
@@ -70,18 +70,24 @@ export default function galleryTemplate(mediaData) {
       const card = createMediaCard(item, index);
       container.el.appendChild(card);
     });
-    const mediaInfoDiv = ElementFactory.create("aside", { className:"media-info-div"})
+    const mediaInfoDiv = ElementFactory.create("aside", {
+      className:"media-info-div",
+      tabindex: "0",
+      ariaLabel: `${calculateTotalLikes(mediaData)} likes. average price:${calculateAveragePrice(mediaData)} euros per day`
+    })
 
     const totalLikesDiv = ElementFactory.create("div", {className:"total-likes-div"})
     const nbTotalLikes = ElementFactory.create("p", {
       className: "nb-total-likes",
-      text: calculateTotalLikes(mediaData)
+      text: calculateTotalLikes(mediaData),
+      tabindex: "0"
      })
 
     const heartIconTotal = ElementFactory.create("img", {
       className: "heart-icon-total",
       src: "assets/icons/heartIconBlack.png",
-      alt: "likes"
+      alt: "likes",
+      tabindex: "-1"
     });
 
     const averagePriceDiv = ElementFactory.create("div", {className:"average-price-div"})
@@ -101,7 +107,7 @@ export default function galleryTemplate(mediaData) {
     wrapper.appendChild(container.el);
     wrapper.appendChild(mediaInfoDiv.el);
 
-    return {galleryContent: wrapper, reorderMenu: reorderDiv.el }
+    return {galleryContent: wrapper}
   }
 
   return { getGalleryDOM };

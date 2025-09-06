@@ -47,6 +47,9 @@ export function displayLightbox(mediaIndex) {
     body.classList.add("lightbox-open");
     main.setAttribute('inert','');
 
+    const video = document.querySelector(".lightbox-media")
+    video.setAttribute("controls", "true")
+
     lightboxElement.focus();
     document.addEventListener("keydown", handleKeyboardEvent);
     initLightboxEvents();
@@ -56,6 +59,9 @@ export function closeLightbox() {
   if (!lightboxElement) return;
 
   document.removeEventListener("keydown", handleKeyboardEvent);
+
+      const video = document.querySelector(".lightbox-media")
+    video.setAttribute("controls", "false")
 
   lightboxElement.remove();
   lightboxElement = null;
