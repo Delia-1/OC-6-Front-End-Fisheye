@@ -24,7 +24,7 @@ export default function lightBoxTemplate(mediaItem) {
 
     const closeLightbox = ElementFactory.create("button", {
         className: "close-lightbox",
-        "aria-label": "Close Light-Box from button",
+        ariaLabel: "Close dialog",
     });
 
     const closeIcon = ElementFactory.create("img", {
@@ -36,7 +36,7 @@ export default function lightBoxTemplate(mediaItem) {
     const prevButton = ElementFactory.create("button", {
       className: "prevButton",
       tabindex: "0",
-      "aria-label": `Previous image`
+      ariaLabel: `Previous image`
     })
 
     const prevIcon = ElementFactory.create("img", {
@@ -47,7 +47,7 @@ export default function lightBoxTemplate(mediaItem) {
         const nextButton = ElementFactory.create("button", {
       className: "nextButton",
       tabindex: "0",
-      "aria-label": `Next image`
+      ariaLabel: `Next image`
     })
 
     const nextIcon = ElementFactory.create("img", {
@@ -63,6 +63,7 @@ export default function lightBoxTemplate(mediaItem) {
     const lightboxMedia = mediaElement.cloneNode(true);
     lightboxMedia.className = "lightbox-media";
     lightboxMedia.setAttribute("aria-label", mediaItem.title);
+    lightboxMedia.setAttribute("tabindex", "0")
 
 
     const pictureDesc = ElementFactory.create("h2", {

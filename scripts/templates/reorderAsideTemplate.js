@@ -43,6 +43,9 @@ export const reorderAsideTemplate = (selectedKey = "popularite") => {
       className: "extra-options",
       role: "listbox",
       ariaLabelledby: "order-label",
+      ariaActivedescendant: "true",
+      ariaSelected: "false",
+
     });
 
     filters
@@ -53,7 +56,6 @@ export const reorderAsideTemplate = (selectedKey = "popularite") => {
           id: `option-${filter.key}`,
           textContent: filter.label,
           role: "option",
-          ariaSelected: "false",
           tabindex: "-1",
         });
         extraOptions.el.appendChild(btn.el);

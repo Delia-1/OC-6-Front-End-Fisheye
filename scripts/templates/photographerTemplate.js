@@ -79,22 +79,28 @@ export default function photographerTemplates(data) {
     const img = ElementFactory.create("img", {
       className: "artist-picture",
       src: picture,
+      // Necessaire pour css
       alt: name,
     });
     const h2 = ElementFactory.create("h2", {
       className: "artist-name",
       text: name,
     });
+
+    const br = ElementFactory.create("br")
+
     const pCountry = ElementFactory.create("p", {
       className: "card-artist__country",
       text: `${city}, ${country.toUpperCase()}`,
       tabindex: "0"
     });
-    const pTagline = ElementFactory.create("p", {
+
+        const spanTagline = ElementFactory.create("span", {
       className: "card-artist__tagline",
       text: tagline,
-      tabindex: "0"
+      tabindex: "0",
     });
+
     const pPrice = ElementFactory.create("p", {
       className: "card-artist__price",
       text: `${price}€/jour`,
@@ -107,7 +113,7 @@ export default function photographerTemplates(data) {
     imgWrapper.el.appendChild(img.el);
     link.el.appendChild(h2.el);
     article.el.appendChild(pCountry.el);
-    article.el.appendChild(pTagline.el);
+    article.el.appendChild(spanTagline.el);
     article.el.appendChild(pPrice.el);
 
     return article.el;

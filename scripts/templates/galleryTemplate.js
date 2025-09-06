@@ -46,7 +46,8 @@ export default function galleryTemplate(mediaData) {
     const heartIcon = ElementFactory.create("img", {
       className: "heart-icon",
       src: "assets/icons/heartIcon.png",
-      alt: "likes, press enter to like"
+      alt: "Likes",
+      ariaLabel:"likes, press enter to like"
     });
 
     article.el.appendChild(mediaElement);

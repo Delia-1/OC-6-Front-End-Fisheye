@@ -25,6 +25,10 @@ export class DivElement {
     if (options.role) this.el.setAttribute("role", options.role);
     if (options.ariaLabelledby)
       this.el.setAttribute("aria-labelledby", options.ariaLabelledby);
+    if (options.ariaActivedescendant)
+      this.el.setAttribute("aria-activedescendant", options.ariaActivedescendant);
+    if (options.ariaSelected)
+      this.el.setAttribute("aria-selected", options.ariaSelected);
   }
 }
 
@@ -58,8 +62,6 @@ export class ImageElement {
     this.el.alt = options.alt || "";
     if (options.ariaHidden)
       this.el.setAttribute("aria-hidden", options.ariaHidden);
-    // if (options.tabindex)
-    //   this.el.setAttribute("tabindex", options.tabindex);
   }
 }
 
@@ -114,6 +116,22 @@ export class ButtonElement {
   }
 }
 
+
+export class SpanElement {
+  constructor(options = {}) {
+    this.el = document.createElement("span");
+    this.el.className = options.className || "";
+    this.el.textContent = options.text || "";
+    if (options.tabindex) this.el.setAttribute("tabindex", options.tabindex);
+  }
+}
+
+export class BrElement {
+  constructor(options = {}) {
+    this.el = document.createElement("span");
+    // this.el.className = options.className || "";
+  }
+}
 export class SectionElement {
   constructor(options = {}) {
     this.el = document.createElement("section");

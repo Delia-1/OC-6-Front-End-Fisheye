@@ -27,11 +27,14 @@ header {
   padding-top: 22px;
 }
 
-h1 {
+
+.title-photograph {
   color: #901c1c;
   margin-right: 7vw;
   font-size: 36px;
 }
+
+
 
 .logo {
   height: 50px;
@@ -46,7 +49,8 @@ a:focus,
   outline: none;
 }
 
-a:focus-visible, .title-photograph:focus-visible {
+a:focus-visible,
+.title-photograph:focus-visible {
   padding: 4px 0;
   border: 3px solid var(--primary);
   border-radius: 4px;
