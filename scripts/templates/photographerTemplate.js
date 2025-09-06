@@ -41,11 +41,13 @@ export default function photographerTemplates(data) {
         const button = document.querySelector(".contact_button");
         const imgWrapper = ElementFactory.create("div", {
           className: "img-wrapper",
+          tabindex: "0",
+          ariaLabelledby: "artist-picture"
         });
         const image = ElementFactory.create("img", {
           className: "artist-picture",
           src: picture,
-          alt: `Photo de ${name}`,
+          alt: name,
         });
 
         photographInfo.el.appendChild(infoWrapper.el);
@@ -65,11 +67,10 @@ export default function photographerTemplates(data) {
   function cardsHomepageTemplate() {
     const article = ElementFactory.create("article", {
       className: "card-artist",
-      ariaLabel: `Carte du photographe ${name}`,
     });
     const link = ElementFactory.create("a", {
       className: "link-artist-page",
-      ariaLabel: `Naviguer sur la page de ${name}`,
+      ariaLabel: `Navigate to ${name} page `,
       href: `photographer.html?id=${id}`,
     });
     const imgWrapper = ElementFactory.create("div", {
@@ -78,7 +79,7 @@ export default function photographerTemplates(data) {
     const img = ElementFactory.create("img", {
       className: "artist-picture",
       src: picture,
-      alt: `Photo de ${name}`,
+      alt: name,
     });
     const h2 = ElementFactory.create("h2", {
       className: "artist-name",
@@ -87,14 +88,18 @@ export default function photographerTemplates(data) {
     const pCountry = ElementFactory.create("p", {
       className: "card-artist__country",
       text: `${city}, ${country.toUpperCase()}`,
+      tabindex: "0"
     });
     const pTagline = ElementFactory.create("p", {
       className: "card-artist__tagline",
       text: tagline,
+      tabindex: "0"
     });
     const pPrice = ElementFactory.create("p", {
       className: "card-artist__price",
       text: `${price}€/jour`,
+      tabindex: "0",
+      ariaLabel: `${price} euros per day`
     });
 
     article.el.appendChild(link.el);

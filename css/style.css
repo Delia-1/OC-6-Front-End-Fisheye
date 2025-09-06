@@ -38,10 +38,15 @@ h1 {
   margin-left: 100px;
   margin-right: 100px;
 }
-a:focus {
+a:focus,
+.title-photograph:focus,
+.card-artist__country,
+.card-artist__price,
+.card-artist__tagline {
   outline: none;
 }
-a:focus-visible {
+
+a:focus-visible, .title-photograph:focus-visible {
   padding: 4px 0;
   border: 3px solid var(--primary);
   border-radius: 4px;
@@ -53,6 +58,7 @@ a:focus-visible {
   gap: 78px 112px;
   margin-top: 92px;
 }
+
 
 .card-artist {
   justify-self: center;
@@ -88,6 +94,12 @@ a:focus-visible {
     font-weight: 400;
     margin: 2px 0 0 0;
   }
+
+  .card-artist__country:focus-visible,
+  .card-artist__price:focus-visible,
+  .card-artist__tagline:focus-visible {
+    border-bottom: 2px solid var(--bg-focus);
+  }
 }
 
 
@@ -96,6 +108,15 @@ a:focus-visible {
   height: 200px;
   border-radius: 50%;
   overflow: hidden;
+}
+
+.img-wrapper:focus {
+  outline: none
+}
+
+.img-wrapper:focus-visible {
+  transform: scale(1.15);
+  border: 4px solid var(--bg-focus)
 }
 
 .artist-picture {

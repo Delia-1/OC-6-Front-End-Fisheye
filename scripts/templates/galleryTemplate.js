@@ -1,6 +1,6 @@
 import { MediaFactory } from "../Factories/mediaFactory.js";
 import { ElementFactory } from "../Factories/elementFactory.js";
-import { handleLikes } from "../pages/photographer.js";
+// import { handleLikes } from "../pages/photographer.js";
 
 const calculateTotalLikes = (mediaData) => {
   let nbLikes = 0;

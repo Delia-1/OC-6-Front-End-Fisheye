@@ -17,7 +17,8 @@ export class DivElement {
   constructor(options = {}) {
     this.el = document.createElement("div");
     this.el.className = options.className || "";
-    this.el.id = options.id;
+    if (options.id)
+      this.el.id = options.id;
     if (options.ariaLabel)
       this.el.setAttribute("aria-label", options.ariaLabel);
     if (options.tabindex) this.el.setAttribute("tabindex", "0");
@@ -42,6 +43,10 @@ export class ParagraphElement {
     this.el = document.createElement("p");
     this.el.className = options.className || "";
     this.el.textContent = options.text || "";
+    if (options.tabindex)
+      this.el.setAttribute("tabindex", options.tabindex);
+    if (options.ariaLabel)
+      this.el.setAttribute("aria-label", options.ariaLabel)
   }
 }
 
@@ -53,6 +58,8 @@ export class ImageElement {
     this.el.alt = options.alt || "";
     if (options.ariaHidden)
       this.el.setAttribute("aria-hidden", options.ariaHidden);
+    // if (options.tabindex)
+    //   this.el.setAttribute("tabindex", options.tabindex);
   }
 }
 

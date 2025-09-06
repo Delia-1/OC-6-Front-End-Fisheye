@@ -67,6 +67,14 @@ main {
   border-radius: 50%;
 }
 
+.artist-picture--ownpage:focus {
+  outline: none
+}
+
+.artist-picture:focus-visible {
+  transform: scale(1.25);
+}
+
 .contact_button,
 .send_button {
   font-size: 20px;

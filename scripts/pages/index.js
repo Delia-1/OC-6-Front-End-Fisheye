@@ -1,6 +1,5 @@
 import { getPhotographers } from "../utils/getPhotographer.js";
-import photographerTemplates from "../templates/photographer.js"
-import {displayModal, initModal, closeModal} from "../Components/contactForm.js";
+import photographerTemplates from "../templates/photographerTemplate.js"
 
 async function displayData(photographers) {
   // Instancie la section dans le dom ou inserer les cards photographers
