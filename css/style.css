@@ -1,10 +1,13 @@
 @import url("photographer.css");
+@import url("lightBox.css");
+@import url("modale.css");
+@import url("reorderDiv.css");
 
 :root {
   --primary: #901c1c;
   --secondary: #d3573c;
   --bg-focus: #db8876;
-  --aside: #DB8876;
+  --aside: #db8876;
 }
 
 body {
@@ -27,32 +30,32 @@ header {
   padding-top: 22px;
 }
 
-
 .title-photograph {
   color: #901c1c;
   margin-right: 7vw;
   font-size: 36px;
+  padding: 8px;
 }
-
-
 
 .logo {
   height: 50px;
   margin-left: 100px;
   margin-right: 100px;
+  padding: 4px 0;
 }
+
 a:focus,
 .title-photograph:focus,
 .card-artist__country,
 .card-artist__price,
-.card-artist__tagline {
+.card-artist__tagline,
+.img-wrapper:focus {
   outline: none;
 }
 
 a:focus-visible,
 .title-photograph:focus-visible {
-  padding: 4px 0;
-  border: 3px solid var(--primary);
+  box-shadow: inset 0 0 0 3px var(--primary);
   border-radius: 4px;
 }
 
@@ -62,7 +65,6 @@ a:focus-visible,
   gap: 78px 112px;
   margin-top: 92px;
 }
-
 
 .card-artist {
   justify-self: center;
@@ -84,12 +86,14 @@ a:focus-visible,
     font-size: 13px;
     font-weight: 400;
     margin: 4px 0 0 0;
+    border-bottom: 2px solid transparent;
   }
   .card-artist__tagline {
     color: #000000;
     font-size: 10px;
     font-weight: 400;
     margin: 2px 0 0 0;
+    border-bottom: 2px solid transparent;
   }
 
   .card-artist__price {
@@ -97,6 +101,7 @@ a:focus-visible,
     font-size: 9px;
     font-weight: 400;
     margin: 2px 0 0 0;
+    border-bottom: 2px solid transparent;
   }
 
   .card-artist__country:focus-visible,
@@ -106,7 +111,6 @@ a:focus-visible,
   }
 }
 
-
 .img-wrapper {
   width: 200px;
   height: 200px;
@@ -114,14 +118,14 @@ a:focus-visible,
   overflow: hidden;
 }
 
-.img-wrapper:focus {
-  outline: none
-}
-
 .img-wrapper:focus-visible {
   transform: scale(1.15);
-  border: 4px solid var(--bg-focus)
+  border: 2px solid var(--primary)
 }
+
+/* .img-wrapper:focus-visible, .close-icon {
+  color: var(--aside);
+} */
 
 .artist-picture {
   width: 175%;
@@ -130,9 +134,9 @@ a:focus-visible,
   border-radius: 50%;
 }
 
-.artist-picture[alt*="Ellie"],
-.artist-picture[alt*="Marcel"],
-.artist-picture[alt*="Rhode"] {
+.artist-picture[name*="Ellie"],
+.artist-picture[name*="Marcel"],
+.artist-picture[name*="Rhode"] {
   width: 200%;
   transform: translate(-22%, -2%);
 }
@@ -148,4 +152,5 @@ a:focus-visible,
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 4px;
 }

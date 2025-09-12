@@ -1,0 +1,97 @@
+/* LIGHTBOX  */
+* body.lightbox-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.lightbox-container {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+
+.lightbox-content {
+  position: relative;
+  z-index: 101;
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 80px;
+  right: 45px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 102;
+  font-size: 24px;
+  color: #901c1c;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.close-lightbox:focus,
+.prevButton:focus,
+.lightbox-container:focus {
+  outline: none;
+}
+
+.close-lightbox:focus-visible,
+.close-lightbox:hover,
+.prevButton:focus-visible,
+.prevButton:hover,
+.nextButton:focus-visible,
+.nextButton:hover {
+  transform: scale(1.25);
+  /* color: var(--secondary); */
+}
+
+.image-section {
+  padding: 0 40px;
+}
+
+.lightbox-media,
+picture .lightbox-media {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.lightbox-title {
+  color: var(--primary);
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+.prevButton,
+.nextButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
