@@ -8,9 +8,6 @@ export default function photographerTemplates(data) {
     if (section.header) {
       return new Header();
     }
-    if (section.card) {
-      return new Card();
-    }
   }
 
   class Header {
@@ -81,14 +78,13 @@ export default function photographerTemplates(data) {
       className: "artist-picture",
       src: picture,
       name: name
-      // alt: name,
     });
     const h2 = ElementFactory.create("h2", {
       className: "artist-name",
       text: name,
     });
 
-    const br = ElementFactory.create("br")
+    // const br = ElementFactory.create("br")
 
     const pCountry = ElementFactory.create("p", {
       className: "card-artist__country",

@@ -69,7 +69,7 @@ export async function init() {
 export const handleLikes = () => {
   const likesDiv = document.querySelectorAll(".likes-div");
 
-  likesDiv.forEach((div, index) => {
+  likesDiv.forEach((div) => {
     const likeButton = div.querySelector(".heart-icon");
     const nbLikes = div.querySelector(".picture__likes");
 
@@ -83,7 +83,7 @@ export const handleLikes = () => {
       `${nbLikes.textContent} likes, press enter to like`
     );
 
-    newLikeButton.addEventListener("click", (e) => {
+    newLikeButton.addEventListener("click", () => {
       let currentLikes = parseInt(
         div.querySelector(".picture__likes").textContent
       );

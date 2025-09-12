@@ -1,0 +1,10 @@
+# Dépendances
+node_modules/
+# Caches ESLint
+.eslintcache
+# OS
+.DS_Store
+Thumbs.db
+# Builds (si un jour tu buildes)
+dist/
+build/

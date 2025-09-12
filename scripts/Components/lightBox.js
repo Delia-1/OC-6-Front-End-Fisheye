@@ -141,7 +141,7 @@ function initLightboxEvents() {
         navigateNextPic();
         break;
       case "Enter":
-      case " ":
+      case " ": {
         const activeElement = document.activeElement;
         if (activeElement.classList.contains("close-lightbox")) {
           closeLightbox();
@@ -151,5 +151,6 @@ function initLightboxEvents() {
           navigateNextPic();
         }
         break;
+      }
     }
   }

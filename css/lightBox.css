@@ -67,7 +67,6 @@
 .nextButton:focus-visible,
 .nextButton:hover {
   transform: scale(1.25);
-  /* color: var(--secondary); */
 }
 
 .image-section {

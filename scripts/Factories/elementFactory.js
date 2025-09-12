@@ -45,7 +45,7 @@ export class ElementFactory {
       case "span":
         return new SpanElement(options);
       case "br":
-        return new BrElement(options);
+        return new BrElement();
       default:
         throw new Error(`Type d'element ${elementType} non supporté`);
     }

@@ -68,10 +68,6 @@ function initForm() {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(form);
-    const firstname = formData.get("firstname")
-    const lastname = formData.get("lastname")
-    const email = formData.get("email")
-    const message = formData.get("message")
     const formEntries = Object.fromEntries(formData.entries());
     closeModal()
     form.reset()

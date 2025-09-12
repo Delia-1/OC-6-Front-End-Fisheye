@@ -45,7 +45,7 @@ const addKeyboardNav = () => {
   orderMenu.addEventListener("keydown", (e) => {
     switch (e.key) {
       case "Enter":
-      case " ":
+      case " ": {
         e.preventDefault();
         const isOpen = orderMenu.getAttribute("aria-expanded") === "true";
         if (!isOpen) {
@@ -55,6 +55,7 @@ const addKeyboardNav = () => {
           closeMenu();
         }
         break;
+      }
       case "ArrowDown":
         e.preventDefault();
         if (orderMenu.getAttribute("aria-expanded") === "false") {
@@ -76,17 +77,19 @@ const addKeyboardNav = () => {
     );
 
     switch (e.key) {
-      case "ArrowDown":
+      case "ArrowDown": {
         e.preventDefault();
         const nextIndex = (currentIndex + 1) % options.length;
         options[nextIndex].focus();
         break;
-      case "ArrowUp":
+      }
+      case "ArrowUp": {
         e.preventDefault();
         const prevIndex =
           currentIndex === 0 ? options.length - 1 : currentIndex - 1;
         options[prevIndex].focus();
         break;
+      }
       case "Enter":
       case " ":
         e.preventDefault();
@@ -133,7 +136,7 @@ const focusFirstOption = () => {
   firstOption && firstOption.focus();
 };
 
-function addDropdownEvents(currentFilter) {
+function addDropdownEvents() {
   const extraOptions = document.querySelector(".extra-options");
 
   extraOptions.querySelectorAll(".order-option").forEach((btn) => {

@@ -129,9 +129,8 @@ export class SpanElement {
 }
 
 export class BrElement {
-  constructor(options = {}) {
-    this.el = document.createElement("span");
-    // this.el.className = options.className || "";
+  constructor() {
+    this.el = document.createElement("br");
   }
 }
 export class SectionElement {
