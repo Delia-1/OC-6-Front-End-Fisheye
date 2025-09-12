@@ -34,7 +34,7 @@ export const reorderAsideTemplate = (selectedKey = "popularite") => {
 
     const dropdownIcon = ElementFactory.create("img", {
       className: "dropdown-close-icon",
-      src: "assets/icons/dropdown-close.png",
+      src: "assets/icons/dropdown-close.svg",
       alt: "dropdown icon",
       ariaHidden: "true",
     });

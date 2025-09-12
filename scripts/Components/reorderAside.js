@@ -109,7 +109,7 @@ const openMenu = () => {
   reorderDiv.setAttribute("open", "true");
 
   if (dropdownIcon) {
-    dropdownIcon.src = "assets/icons/dropdown-open.png";
+    dropdownIcon.src = "assets/icons/dropdown-open.svg"
   }
 };
 
@@ -122,7 +122,7 @@ const closeMenu = () => {
   reorderDiv.setAttribute("open", "false");
 
   if (dropdownIcon) {
-    dropdownIcon.src = "assets/icons/dropdown-close.png";
+    dropdownIcon.src = "assets/icons/dropdown-close.svg";
   }
 };
 

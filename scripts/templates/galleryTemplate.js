@@ -25,16 +25,17 @@ export default function galleryTemplate(mediaData) {
     const media = MediaFactory.create(mediaItem);
     const mediaElement = media.render();
 
-    mediaElement.setAttribute("tabindex", "0");
-    mediaElement.setAttribute("role", "button");
-    mediaElement.setAttribute("aria-label", `${mediaItem.title}, closeup view`);
+    const btnMediaWrapper = ElementFactory.create("button", {
+      className: "btn-media-wrapper",
+      ariaLabel: `${mediaItem.title}, closeup view`,
+    })
 
     const article = ElementFactory.create("article", {
       className: "card-picture",
     });
 
     const infoWrapper = ElementFactory.create("div", {className: "pic-info-wrapper",});
-    const artPieceTitle = ElementFactory.create("h3", {
+    const artPieceTitle = ElementFactory.create("h2", {
       className: "picture__title",
       text: mediaItem.title
     });
@@ -50,7 +51,8 @@ export default function galleryTemplate(mediaData) {
       ariaLabel:"likes, press enter to like"
     });
 
-    article.el.appendChild(mediaElement);
+    article.el.appendChild(btnMediaWrapper.el);
+    btnMediaWrapper.el.appendChild(mediaElement);
     article.el.appendChild(infoWrapper.el);
     infoWrapper.el.appendChild(artPieceTitle.el);
     infoWrapper.el.appendChild(likesDiv.el);

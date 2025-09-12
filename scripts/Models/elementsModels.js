@@ -62,6 +62,8 @@ export class ImageElement {
     this.el.alt = options.alt || "";
     if (options.ariaHidden)
       this.el.setAttribute("aria-hidden", options.ariaHidden);
+    if (options.name)
+      this.el.setAttribute("name", options.name);
   }
 }
 

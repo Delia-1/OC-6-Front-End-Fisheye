@@ -12,7 +12,7 @@ let currentIndex = 0;
 
 export function initLightBox(mediaData) {
     currentMediaData = mediaData;
-    const mediaLinks = document.querySelectorAll(".media");
+    const mediaLinks = document.querySelectorAll(".btn-media-wrapper");
 
     mediaLinks.forEach((media, index) => {
 

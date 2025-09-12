@@ -47,6 +47,7 @@ export default function photographerTemplates(data) {
         const image = ElementFactory.create("img", {
           className: "artist-picture",
           src: picture,
+          name: name,
           alt: name,
         });
 
@@ -79,8 +80,8 @@ export default function photographerTemplates(data) {
     const img = ElementFactory.create("img", {
       className: "artist-picture",
       src: picture,
-      // Necessaire pour css
-      alt: name,
+      name: name
+      // alt: name,
     });
     const h2 = ElementFactory.create("h2", {
       className: "artist-name",
