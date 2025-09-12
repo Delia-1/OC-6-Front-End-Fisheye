@@ -1,6 +1,5 @@
 import { MediaFactory } from "../Factories/mediaFactory.js";
 import { ElementFactory } from "../Factories/elementFactory.js";
-// import { handleLikes } from "../pages/photographer.js";
 
 const calculateTotalLikes = (mediaData) => {
   let nbLikes = 0;
@@ -19,9 +18,9 @@ const calculateAveragePrice = (mediaData) => {
   return averagePrice;
 }
 
-export default function galleryTemplate(mediaData) {
+export const galleryTemplate = (mediaData) => {
 
-  function createMediaCard(mediaItem) {
+  const createMediaCard = (mediaItem) => {
     const media = MediaFactory.create(mediaItem);
     const mediaElement = media.render();
 
@@ -62,7 +61,7 @@ export default function galleryTemplate(mediaData) {
     return article.el;
   }
 
-  function getGalleryDOM() {
+  const getGalleryDOM = () => {
 
     const container = ElementFactory.create("section", {
       className: "gallery-container",

@@ -1,7 +1,7 @@
 import { getPhotographers } from "../utils/getPhotographer.js";
 import photographerTemplates from "../templates/photographerTemplate.js"
 
-async function displayData(photographers) {
+const displayData = async (photographers) => {
   // Instancie la section dans le dom ou inserer les cards photographers
   const photographersSection = document.querySelector(".photographer_section");
 
@@ -15,7 +15,7 @@ async function displayData(photographers) {
   });
 }
 
-async function init() {
+const init = async() => {
   // Récupère les datas des photographes
   const data = await getPhotographers();
   // Appel la fonction qui s'occupe du display via mapping

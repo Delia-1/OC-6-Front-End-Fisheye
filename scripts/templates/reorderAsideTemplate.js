@@ -10,7 +10,7 @@ export const reorderAsideTemplate = (selectedKey = "popularite") => {
   const selectedFilter =
     filters.find((f) => f.key === selectedKey) || filters[0];
 
-  function getReorderDOM() {
+  const getReorderDOM = () => {
     const reorderDiv = ElementFactory.create("aside", {
       className: "reorder-div",
     });

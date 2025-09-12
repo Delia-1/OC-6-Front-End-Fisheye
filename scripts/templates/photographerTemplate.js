@@ -1,18 +1,18 @@
 import { ElementFactory } from "../Factories/elementFactory.js";
 
-export default function photographerTemplates(data) {
+export const photographerTemplates = (data) => {
   const { id, name, portrait, city, country, tagline, price } = data;
   const picture = `assets/photographers/${portrait}`;
 
-  function PhotographersFactory(section) {
+  const PhotographersFactory = (section) => {
     if (section.header) {
       return new Header();
     }
   }
 
   class Header {
-    constructor() {
-      this.render = function () {
+    constructor() {}
+      render() {
         const photographInfo = ElementFactory.create("div", {
           className: "photograph-info",
         });
@@ -59,10 +59,9 @@ export default function photographerTemplates(data) {
 
         return photographInfo.el;
       };
-    }
-  }
+  };
 
-  function cardsHomepageTemplate() {
+  const cardsHomepageTemplate = () => {
     const article = ElementFactory.create("article", {
       className: "card-artist",
     });

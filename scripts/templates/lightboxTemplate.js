@@ -1,7 +1,7 @@
 import { MediaFactory } from "../Factories/mediaFactory.js";
 import { ElementFactory } from "../Factories/elementFactory.js";
 
-export default function lightBoxTemplate(mediaItem) {
+export const lightBoxTemplate = (mediaItem) => {
     const media = MediaFactory.create(mediaItem);
     const mediaElement = media.render();
 

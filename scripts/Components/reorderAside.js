@@ -1,4 +1,4 @@
-import galleryTemplate from "../templates/galleryTemplate.js";
+import { galleryTemplate } from "../templates/galleryTemplate.js";
 import { reorderAsideTemplate } from "../templates/reorderAsideTemplate.js";
 import { handleLikes } from "../pages/photographer.js";
 import { initLightBox } from "./lightBox.js";
@@ -136,7 +136,7 @@ const focusFirstOption = () => {
   firstOption && firstOption.focus();
 };
 
-function addDropdownEvents() {
+const addDropdownEvents = () => {
   const extraOptions = document.querySelector(".extra-options");
 
   extraOptions.querySelectorAll(".order-option").forEach((btn) => {

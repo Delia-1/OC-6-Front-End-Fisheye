@@ -8,7 +8,7 @@ const handleEscapeModal = (e) => {
   }
 }
 
-export function displayModal() {
+export const displayModal = () => {
   modal.style.display = "block";
   modal.removeAttribute("inert")
   modal.setAttribute("tabindex", "-1")
@@ -61,7 +61,7 @@ export const initModal = () => {
 }
 
 
-function initForm() {
+const initForm = () => {
 
   // Recuperations des valeurs et log des champs
   const form = document.querySelector("form");
