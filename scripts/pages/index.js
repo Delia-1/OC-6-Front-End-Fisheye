@@ -1,5 +1,5 @@
 import { getPhotographers } from "../utils/getPhotographer.js";
-import photographerTemplates from "../templates/photographerTemplate.js"
+import { photographerTemplates } from "../templates/photographerTemplate.js"
 
 const displayData = async (photographers) => {
   // Instancie la section dans le dom ou inserer les cards photographers

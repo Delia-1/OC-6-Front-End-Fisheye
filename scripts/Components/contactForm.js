@@ -33,11 +33,9 @@ export const closeModal = () => {
   document.removeEventListener("keydown", handleEscapeModal)
   if (contactButton) {
    contactButton.focus();
-   console.log("hello du focus du contact btn")
   }
-
-
 }
+
 export const initModal = () => {
   const buttonModale = document.querySelector(".contact_button");
   const buttonClose = document.querySelector(".close-button");

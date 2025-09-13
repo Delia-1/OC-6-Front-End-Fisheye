@@ -126,6 +126,7 @@ textarea:focus,
   display: flex;
   flex-direction: column;
   height: 351px;
+  padding-bottom: 20px;
 }
 
 .card-picture:focus-visible {

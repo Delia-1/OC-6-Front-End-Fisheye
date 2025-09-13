@@ -6,7 +6,6 @@ import { initLightBox } from "./lightBox.js";
 let currentMediaData = [];
 
 const sortByTitle = (mediaData) => {
-  console.log("TRI PAR title");
   return [...mediaData].sort((media1, media2) =>
     media1.title.localeCompare(media2.title, "en", {
       sensitivity: "base",
@@ -16,12 +15,10 @@ const sortByTitle = (mediaData) => {
 };
 
 const sortByPop = (mediaData) => {
-  console.log("TRI PAR POPULARITÉ");
   return [...mediaData].sort((media1, media2) => media2.likes - media1.likes);
 };
 
 const sortByDate = (mediaData) => {
-  console.log("TRI PAR date");
   return [...mediaData].sort(
     (media1, media2) => new Date(media2.date) - new Date(media1.date)
   );
