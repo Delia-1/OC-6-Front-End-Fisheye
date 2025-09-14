@@ -11,7 +11,6 @@ import {
   ButtonElement,
   AsideElement,
   SpanElement,
-  BrElement
 } from '../Models/elementsModels.js';
 
 
@@ -44,8 +43,6 @@ export class ElementFactory {
         return new AsideElement(options)
       case "span":
         return new SpanElement(options);
-      case "br":
-        return new BrElement();
       default:
         throw new Error(`Type d'element ${elementType} non supporté`);
     }

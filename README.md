@@ -79,13 +79,6 @@ cd p-6-Front-End-Fisheye
 - **Gestion de l'accessibilité** : Apprentissage des bonnes pratiques ARIA et navigation clavier
 - **Architecture modulaire** : Structuration du code en modules ES6 réutilisables
 
-### 🧩 Défis techniques relevés
-- **Lightbox accessible** : Implémentation du focus trapping et navigation clavier
-- **Design-pattern média** : Gestion différenciée photos/vidéos avec une interface commune
-- **Algorithmes de tri** : Création de systèmes de tri multi-critères
-- **Gestion d'état** : Synchronisation des likes entre composants
-
-
 ## ♿ Tests d'accessibilité
 
 ### Outils de validation

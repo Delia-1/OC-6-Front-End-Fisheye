@@ -13,14 +13,12 @@ export const initLightBox = (mediaData) => {
   const mediaLinks = document.querySelectorAll(".btn-media-wrapper");
 
   mediaLinks.forEach((media, index) => {
-    // clique
+
     media.addEventListener("click", (e) => {
       e.preventDefault();
       displayLightbox(index);
-      console.log("open", index);
     });
 
-    // clavier
     media.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
@@ -123,7 +121,6 @@ const handleKeyboardEvent = (e) => {
   switch (e.key) {
     case "Escape":
       closeLightbox();
-      console.log("j'entre dans switch escape");
       break;
     case "ArrowLeft":
       e.preventDefault();

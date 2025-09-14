@@ -5,7 +5,7 @@ import { initModal } from "../Components/contactForm.js";
 import { initLightBox } from "../Components/lightBox.js";
 import { toggleOptions } from "../Components/reorderAside.js";
 
-const displayDataProfilePage = async (photographer) => {
+const displayHeaderProfilePage = async (photographer) => {
   const headerSection = document.querySelector(".photograph-section");
   const model = photographerTemplates(photographer);
   const headerDOM = model.renderHeader();
@@ -16,7 +16,7 @@ const displayDataProfilePage = async (photographer) => {
   if (modalTitle) {
     modalTitle.innerHTML = `Contactez-moi ${photographer.name}`;
   }
-}
+};
 
 const displayGalleryProfilePage = async (mediaData) => {
   const gallerySection = document.querySelector(".gallery-section");
@@ -31,21 +31,21 @@ const displayGalleryProfilePage = async (mediaData) => {
   toggleOptions(mediaData);
   initModal();
   initLightBox(mediaData);
-}
+};
 
 const getphotographerId = () => {
   const urlParams = new URLSearchParams(window.location.search);
   return parseInt(urlParams.get("id"));
-}
+};
 
-const getRightPics = async() => {
+const getRightPics = async () => {
   const photographerId = getphotographerId();
   const data = await getPhotographers();
   let pics = data.media.filter((pic) => pic.photographerId === photographerId);
   return pics;
-}
+};
 
-export const init = async() => {
+export const init = async () => {
   try {
     const photographId = getphotographerId();
     if (!photographId) {
@@ -59,17 +59,14 @@ export const init = async() => {
       (p) => p.id === photographId
     );
 
-    await displayDataProfilePage(rightPhotographer);
+    await displayHeaderProfilePage(rightPhotographer);
     await displayGalleryProfilePage(goodPics);
 
     handleLikes();
-
   } catch (error) {
-    console.error("Erreur lors de l'initialisation", error)
+    console.error("Erreur lors de l'initialisation", error);
   }
-
-
-}
+};
 
 export const handleLikes = () => {
   const likesDiv = document.querySelectorAll(".likes-div");
