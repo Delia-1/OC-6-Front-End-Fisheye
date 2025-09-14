@@ -10,6 +10,10 @@
   --aside: #db8876;
 }
 
+*:focus {
+  outline: none
+}
+
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
@@ -42,15 +46,6 @@ header {
   margin-left: 100px;
   margin-right: 100px;
   padding: 4px 0;
-}
-
-a:focus,
-.title-photograph:focus,
-.card-artist__country,
-.card-artist__price,
-.card-artist__tagline,
-.img-wrapper:focus {
-  outline: none;
 }
 
 a:focus-visible,
@@ -123,10 +118,6 @@ a:focus-visible,
   border: 2px solid var(--primary)
 }
 
-/* .img-wrapper:focus-visible, .close-icon {
-  color: var(--aside);
-} */
-
 .artist-picture {
   width: 175%;
   object-fit: cover;
@@ -141,7 +132,7 @@ a:focus-visible,
   transform: translate(-22%, -2%);
 }
 
-.artist-picture[alt*="Tracy"] {
+.artist-picture[name*="Tracy"] {
   width: 125%;
   transform: translate(-2%, -12%);
 }

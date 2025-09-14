@@ -28,9 +28,7 @@ main {
     margin: 43px 0 0 0;
     font-weight: 300;
     color: var(--secondary);
-    color: #901c1c;
     margin-right: 7vw;
-    font-size: 36px;
   }
 
   .info-wrapper__origin {
@@ -44,25 +42,8 @@ main {
   }
 }
 
-button:focus,
-.info-wrapper:focus,
-.lightbox-media,
-.artist-picture--ownpage:focus,
-.card-picture:focus,
-.btn-media-wrapper:focus,
-.heart-icon:focus,
-.media-info-div:focus,
-.close-button:focus,
-form input:focus,
-textarea:focus,
-.order-menu:focus .order-option.is-active,
-.order-menu:focus {
-  outline: none;
-}
-
 .info-wrapper:focus-visible,
 .lightbox-media:focus-visible {
-  outline: none;
   box-shadow: 0 0 0 3px var(--primary);
 }
 
@@ -116,7 +97,7 @@ textarea:focus,
 }
 
 .gallery-container {
-  margin-top: 60px;
+  margin: 2vh 0 6vh 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1vh 6vw;

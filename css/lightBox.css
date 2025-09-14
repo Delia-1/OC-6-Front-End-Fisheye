@@ -54,12 +54,6 @@
   border-radius: 4px;
 }
 
-.close-lightbox:focus,
-.prevButton:focus,
-.lightbox-container:focus {
-  outline: none;
-}
-
 .close-lightbox:focus-visible,
 .close-lightbox:hover,
 .prevButton:focus-visible,
