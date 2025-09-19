@@ -3,22 +3,23 @@ import { ElementFactory } from "../Factories/elementFactory.js";
 
 const calculateTotalLikes = (mediaData) => {
   let nbLikes = 0;
-  mediaData.forEach((media) => {
-    nbLikes += media.likes;
+  mediaData.forEach((mediaItem) => {
+    nbLikes += mediaItem.likes;
   });
   return nbLikes;
 };
 
 const calculateAveragePrice = (mediaData) => {
   let totalPrice = 0;
-  mediaData.forEach((media) => {
-    totalPrice += media.price;
+  mediaData.forEach((mediaItem) => {
+    totalPrice += mediaItem.price;
   });
   const averagePrice = Math.round(totalPrice / mediaData.length);
   return averagePrice;
 };
 
 export const galleryTemplate = (mediaData) => {
+
   const createMediaCard = (mediaItem) => {
     const media = MediaFactory.create(mediaItem);
     const mediaElement = media.render();
@@ -49,6 +50,7 @@ export const galleryTemplate = (mediaData) => {
       ariaLabel: "likes, press enter to like",
     });
 
+
     article.el.appendChild(btnMediaWrapper.el);
     btnMediaWrapper.el.appendChild(mediaElement);
     article.el.appendChild(infoWrapper.el);
@@ -66,8 +68,8 @@ export const galleryTemplate = (mediaData) => {
       ariaLabel: "section des photographies",
     });
 
-    mediaData.forEach((item, index) => {
-      const card = createMediaCard(item, index);
+    mediaData.forEach((mediaItem, index) => {
+      const card = createMediaCard(mediaItem, index);
       container.el.appendChild(card);
     });
     const mediaInfoDiv = ElementFactory.create("aside", {
@@ -116,7 +118,7 @@ export const galleryTemplate = (mediaData) => {
     wrapper.appendChild(container.el);
     wrapper.appendChild(mediaInfoDiv.el);
 
-    return { galleryContent: wrapper };
+    return wrapper ;
   };
 
   return { getGalleryDOM };

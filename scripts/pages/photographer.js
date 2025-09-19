@@ -5,10 +5,10 @@ import { initModal } from "../Components/contactForm.js";
 import { initLightBox } from "../Components/lightBox.js";
 import { toggleOptions } from "../Components/reorderAside.js";
 
-const displayHeaderProfilePage = async (photographer) => {
+const displayHeaderProfilePage = (photographer) => {
   const headerSection = document.querySelector(".photograph-section");
-  const model = photographerTemplates(photographer);
-  const headerDOM = model.renderHeader();
+  const templateTools = photographerTemplates(photographer);
+  const headerDOM = templateTools.renderHeader();
 
   headerSection.appendChild(headerDOM);
 
@@ -18,12 +18,11 @@ const displayHeaderProfilePage = async (photographer) => {
   }
 };
 
-const displayGalleryProfilePage = async (mediaData) => {
+const displayGalleryProfilePage = (mediaData) => {
   const gallerySection = document.querySelector(".gallery-section");
-  const galleryModel = galleryTemplate(mediaData);
-  const { galleryContent } = galleryModel.getGalleryDOM();
-
-  gallerySection.appendChild(galleryContent);
+  const galleryTools = galleryTemplate(mediaData);
+  const wrapper = galleryTools.getGalleryDOM();
+  gallerySection.appendChild(wrapper);
 
   const video = document.querySelector("video");
   video.removeAttribute("controls");
@@ -38,29 +37,26 @@ const getphotographerId = () => {
   return parseInt(urlParams.get("id"));
 };
 
-const getRightPics = async () => {
-  const photographerId = getphotographerId();
-  const data = await getPhotographers();
-  let pics = data.media.filter((pic) => pic.photographerId === photographerId);
-  return pics;
+const getRightPics = (data, photographerId) => {
+  return data.media.filter((pic) => pic.photographerId === photographerId);
 };
 
 export const init = async () => {
   try {
-    const photographId = getphotographerId();
-    if (!photographId) {
+    const photographerId = getphotographerId();
+    if (!photographerId) {
       console.error("Aucun ID de photographe trouvé dans l'URL");
       return;
     }
     // Récupère les datas des photographes
     const data = await getPhotographers();
-    const goodPics = await getRightPics();
+    const goodPics = getRightPics(data, photographerId);
     const rightPhotographer = data.photographers.find(
-      (p) => p.id === photographId
+      (p) => p.id === photographerId
     );
 
-    await displayHeaderProfilePage(rightPhotographer);
-    await displayGalleryProfilePage(goodPics);
+    displayHeaderProfilePage(rightPhotographer);
+    displayGalleryProfilePage(goodPics);
 
     handleLikes();
   } catch (error) {
@@ -74,7 +70,7 @@ export const handleLikes = () => {
   likesDiv.forEach((div) => {
     const likeButton = div.querySelector(".heart-icon");
     const nbLikes = div.querySelector(".picture__likes");
-
+    // Pour éviter l'accumulation des eventListener
     const newLikeButton = likeButton.cloneNode(true);
     likeButton.parentNode.replaceChild(newLikeButton, likeButton);
 

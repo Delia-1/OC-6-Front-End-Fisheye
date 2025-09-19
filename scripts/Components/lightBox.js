@@ -94,7 +94,7 @@ const updateLightBox = (newIndex) => {
     newMediaElement.setAttribute("controls", "true");
   }
 
-  lightboxTitle.textContent = newMedia.title || "";
+  lightboxTitle.textContent = newMedia.title;
 };
 
 const initLightboxEvents = () => {
