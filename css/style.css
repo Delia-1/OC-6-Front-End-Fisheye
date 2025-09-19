@@ -31,7 +31,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  padding-top: 22px;
+  padding-top: 35px;
 }
 
 .title-photograph {
@@ -59,6 +59,7 @@ a:focus-visible,
   grid-template-columns: 1fr 1fr 1fr;
   gap: 78px 112px;
   margin-top: 92px;
+  margin-bottom: 30px;
 }
 
 .card-artist {

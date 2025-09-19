@@ -169,8 +169,8 @@ async function updateGalleryProfilePage(
   reorderSection.innerHTML = "";
 
   const newGalleryModel = galleryTemplate(sortedData);
-  const { galleryContent } = newGalleryModel.getGalleryDOM();
 
+  const galleryContent = newGalleryModel.getGalleryDOM();
   gallerySection.appendChild(galleryContent);
 
   toggleOptions(sortedData, selectedFilter);

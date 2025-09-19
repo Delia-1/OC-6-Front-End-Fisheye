@@ -92,9 +92,12 @@ const updateLightBox = (newIndex) => {
 
   if (newMediaElement.tagName === "VIDEO") {
     newMediaElement.setAttribute("controls", "true");
+    newMediaElement.setAttribute("aria-label", newMedia.title)
   }
+    newMediaElement.setAttribute("tabindex", "0")
 
-  lightboxTitle.textContent = newMedia.title || "";
+  lightboxTitle.textContent = newMedia.title;
+  newMediaElement.focus();
 };
 
 const initLightboxEvents = () => {

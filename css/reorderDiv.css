@@ -68,6 +68,7 @@
 .extra-options [role="option"]:focus-visible,
 .extra-options [role="option"]:hover {
   background-color: var(--bg-focus);
+  color: #000;
   border: none;
 }
 

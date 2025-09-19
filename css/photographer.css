@@ -22,13 +22,13 @@ main {
   margin-top: -1.8em;
   border: 2px solid transparent;
   border-radius: 4px;
+  max-width: fit-content;
 
   .info-wrapper__name {
     font-size: 4em;
     margin: 43px 0 0 0;
     font-weight: 300;
     color: var(--secondary);
-    margin-right: 7vw;
   }
 
   .info-wrapper__origin {
@@ -48,7 +48,7 @@ main {
 }
 
 .btn-wrapper {
-  margin-left: -5em;
+  margin-left: -5vw;
   margin-top: 1.8em;
 }
 
@@ -94,6 +94,7 @@ main {
 
 .select-label {
   font-size: 1.2em;
+  font-weight: 700;
 }
 
 .gallery-container {
@@ -108,6 +109,7 @@ main {
   flex-direction: column;
   height: 351px;
   padding-bottom: 20px;
+  max-width: 370px;
 }
 
 .card-picture:focus-visible {

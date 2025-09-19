@@ -9,9 +9,8 @@ export const lightBoxTemplate = (mediaItem) => {
         className: "lightbox-container",
         id: "lightbox_modal",
         role: "dialog",
-        "aria-label": "image closeup view",
-        "aria-modal": "true",
-        tabindex : "-1"
+        ariaLabel: "image closeup view",
+        tabindex : "0"
     });
 
     const overlay = ElementFactory.create("div", {
